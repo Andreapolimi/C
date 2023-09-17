@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/andreavaccai/Coding/C",
-      "program": "/Users/andreavaccai/Coding/C/build/Debug/outDebug"
+      "cwd": "/Users/andreavaccai/Coding/C/Esercizi/re_regina",
+      "program": "/Users/andreavaccai/Coding/C/Esercizi/re_regina/build/Debug/outDebug"
     }
   ]
 }
