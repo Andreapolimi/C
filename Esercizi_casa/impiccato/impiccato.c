@@ -2,26 +2,23 @@
     main: creazione gioco (parola, parola vuota e numero di tentativi)
             + acquisizione lettere giocatore 2
     acquisizione lettera: controlla se la lettera è già stata usata, se no la aggiunge alla lista e fa procedere il programma
-    controllo lettera: verifica se la lettera è presente, se si esegue aggiunta lettera
+    controllo_lettera lettera: verifica se la lettera è presente, se si esegue aggiunta lettera
 */
-
-#include <stdio.h>
-#define dim 50
 
 #include <stdio.h>
 #define dim 50
 
 int main()
 {
-    int max, i = 0, j, vittoria = 1, conferma, controllo, esci;
-    char parola[dim], parola_censurata[dim], tent[dim], lettere_usate[dim];
+    int tent_max, i = 0, j, vittoria = 1, presenza_lettera, controllo_lettera, esci;
+    char parola[dim], parola_censurata[dim], tent_utente[dim], lettere_usate[dim];
     ;
 
     // acquisizione parola e numero di tentativi concessi
     printf("Giocatore 1 inserire la parola da indovinare: ");
     scanf("%s", parola);
     printf("Inserire il numero di tentativi concessi per indovinare (di norma 6): ");
-    scanf("%d", &max);
+    scanf("%d", &tent_max);
 
     do
     {
@@ -42,46 +39,46 @@ int main()
 
     // ciclo di acquisizione delle lettere
 
-    for (i = 0; i < max && vittoria != 0; i++)
+    for (i = 0; i < tent_max && vittoria != 0; i++)
     {
-        // controllo per vedere se la lettera inserita è già stata utilizzata
+        // controllo_lettera per vedere se la lettera inserita è già stata utilizzata
         esci = 0;
         do
         {
             printf("Il tuo tentatiivo numero %d? ", (i + 1));
-            scanf("%s", &tent[i]);
+            scanf("%s", &tent_utente[i]);
 
-            controllo = 0;
+            controllo_lettera = 0;
             for (j = 0; j < i; j++)
             {
-                if (tent[i] == lettere_usate[j])
-                    controllo += 1;
+                if (tent_utente[i] == lettere_usate[j])
+                    controllo_lettera += 1;
             }
 
-            if (controllo > 0)
+            if (controllo_lettera > 0)
                 printf("Lettera già usata, riprova\n");
             else
             {
-                lettere_usate[i] = tent[i];
+                lettere_usate[i] = tent_utente[i];
                 esci = 1;
             }
         } while (esci == 0);
 
-        // controllo presenza della lettera nella parola
-        conferma = 0;
+        // controllo_lettera presenza della lettera nella parola
+        presenza_lettera = 0;
         j = 0;
         do
         {
-            if (parola[j] == tent[i])
+            if (parola[j] == tent_utente[i])
             {
-                parola_censurata[j] = tent[i];
-                conferma = 1;
+                parola_censurata[j] = tent_utente[i];
+                presenza_lettera = 1;
             }
             j += 1;
         } while (parola[j] != '\0');
 
         // inserimento lettera nella parola censurata
-        if (conferma == 1)
+        if (presenza_lettera == 1)
         {
             printf("Lettera presente, la nuova parola e': ");
             j = 0;
@@ -96,7 +93,7 @@ int main()
 
             printf("\n");
 
-            // controllo per vedere se l'utente ha vinto
+            // controllo_lettera per vedere se l'utente ha vinto
             if (vittoria == 1)
             {
                 vittoria = 0;
@@ -118,7 +115,7 @@ int main()
     }
 
     // output in caso di perdita
-    if (i == max)
+    if (i == tent_max)
     {
         printf("Mi dispiace, hai finito i tentativi, la parola era %s", parola);
     }

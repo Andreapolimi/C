@@ -21,7 +21,7 @@ void Mangia(int r1, int c1, int r2, int c2)
         {
             // verificare se è sulla diagonale
             if (abs(r1 - r2) == abs(c1 - c2))
-                printf("La regina è sulla stessa diagonale");
+                printf("La regina è sulla stessa diagonale e può mangiare il re");
             else
                 printf("La regina non può mangiare il re");
         }
@@ -30,31 +30,31 @@ void Mangia(int r1, int c1, int r2, int c2)
 
 int main()
 {
-    int rowking, colking, rowqueen, colqueen;
+    int row_king, col_king, row_queen, col_queen;
 
     // Richiesta in input delle posizioni del re e della regina
     do
     {
-        printf("Inserisci la posizione del re (prima la riga e poi la colonna, da 1 a 8:\n)");
-        scanf("%d", &rowking);
-        scanf("%d", &colking);
-        if (rowking < 1 || rowking > 8 || colking < 1 || colking > 8)
+        printf("Inserisci la posizione del re (prima la riga e poi la colonna, da 1 a 8): ");
+        scanf("%d", &row_king);
+        scanf("%d", &col_king);
+        if (row_king < 1 || row_king > 8 || col_king < 1 || col_king > 8)
             printf("Valore della cella non valido\n");
-    } while (rowking < 1 || rowking > 8 || colking < 1 || colking > 8);
+    } while (row_king < 1 || row_king > 8 || col_king < 1 || col_king > 8);
 
     do
     {
-        printf("Inserisci la posizione della regina (prima la riga e poi la colonna, da 1 a 8:\n)");
-        scanf("%d", &rowqueen);
-        scanf("%d", &colqueen);
-        if (rowqueen < 1 || rowqueen > 8 || colqueen < 1 || colqueen > 8)
+        printf("Inserisci la posizione della regina (prima la riga e poi la colonna, da 1 a 8): ");
+        scanf("%d", &row_queen);
+        scanf("%d", &col_queen);
+        if (row_queen < 1 || row_queen > 8 || col_queen < 1 || col_queen > 8)
             printf("Valore della cella non valido\n");
-        if (rowking == rowqueen && colking == colqueen)
+        if (row_king == row_queen && col_king == col_queen)
             printf("Posizione non valida, inserirne una diversa da quella del re\n");
-    } while ((rowqueen < 1 || rowqueen > 8 || colqueen < 1 || colqueen > 8) || (rowking == rowqueen && colking == colqueen));
+    } while ((row_queen < 1 || row_queen > 8 || col_queen < 1 || col_queen > 8) || (row_king == row_queen && col_king == col_queen));
 
     // Richiamo la funzione per vedere se la regina può mangiare o meno
-    Mangia(rowking, colking, rowqueen, colqueen);
+    Mangia(row_king, col_king, row_queen, col_queen);
 
     return 0;
 }
