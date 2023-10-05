@@ -15,8 +15,9 @@ int main()
         while (!feof(prova))
         {
             fgets(riga, DIM, prova);
+
             printf("%s", riga);
-        }
+                }
     }
     else
     {
