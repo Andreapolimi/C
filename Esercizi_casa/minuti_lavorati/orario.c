@@ -55,8 +55,14 @@ int main()
                 }
             }
 
-            minuti_lavorati[0] = 60 - minuto_iniziale[0] + minuto_finale[0];
-            ore_lavorate[0] = ora_finale[0] - (ora_inziale[0] - 1);
+            minuti_lavorati[0] = (ora_finale[0] * 60 + minuto_finale[0]) - (ora_inziale[0] * 60 + minuto_iniziale[0]);
+
+            ore_lavorate[0] = 0;
+            while (minuti_lavorati[0] >= 60)
+            {
+                minuti_lavorati[0] -= 60;
+                ore_lavorate[0] += 1;
+            }
 
             printf("Il lavoratore %s ha lavorato per %d ore e %d minuti", id_scelto, ore_lavorate[0], minuti_lavorati[0]);
         }
@@ -102,10 +108,14 @@ int main()
                 }
             }
         }
-        for (i = 0; i < cont; i++)
-        {
-            minuti_lavorati[i] = 60 - minuto_iniziale[i] + minuto_finale[i];
-            ore_lavorate[i] = ora_finale[i] - (ora_inziale[i] - 1);
+            minuti_lavorati[i] = (ora_finale[i] * 60 + minuto_finale[i]) - (ora_inziale[i] * 60 + minuto_iniziale[i]);
+
+            ore_lavorate[i] = 0;
+            while (minuti_lavorati[i] > 60)
+            {
+                minuti_lavorati[i] -= 60;
+                ore_lavorate[i] += 1;
+            }
             printf("Il lavoratore %s ha lavorato per %d ore e %d minuti\n", id_groupby[i], ore_lavorate[i], minuti_lavorati[i]);
         }*/
     }
