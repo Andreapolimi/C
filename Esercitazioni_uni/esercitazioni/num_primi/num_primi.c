@@ -12,7 +12,8 @@ typedef enum bool
 int main()
 {
     contatori i;
-    controllo quoziente, esci = False;
+    controllo quoziente;
+    Bool esci = False;
     int num;
 
     printf("Inserisci il numero: ");
@@ -29,7 +30,7 @@ int main()
         quoziente = num / i;
     }
 
-    if (esci == 0)
+    if (esci == False)
         printf("%d e' primo", num);
 
     return 0;
