@@ -11,7 +11,6 @@ void printArray(int **array, int dim)
     printf("]");
 }
 
-typedef int controllo;
 typedef int dimensione;
 typedef int contatori;
 typedef int puntatori;
