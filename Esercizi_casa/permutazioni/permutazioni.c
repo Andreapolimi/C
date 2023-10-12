@@ -57,6 +57,7 @@ int main()
                 }
                 dim2--;
                 controllo++;
+                sequenza2_copia = (int *)realloc(sequenza2_copia, dim2 * sizeof(int));
             }
         }
     }
