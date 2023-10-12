@@ -16,12 +16,18 @@ typedef int dimensione;
 typedef int contatori;
 typedef int puntatori;
 
+typedef enum bool
+{
+    False,
+    True
+} Bool;
+
 int main()
 {
     puntatori *sequenza1, *sequenza2, *sequenza2_copia;
     dimensione dim1, dim2;
     contatori i, j, k;
-    controllo controllo;
+    Bool esci;
 
     printf("Inserire qunati numeri comporranno le sequenze: ");
     scanf("%d", &dim1);
@@ -46,8 +52,8 @@ int main()
 
     for (i = 0; i < dim1 && dim2 != 0; i++)
     {
-        controllo = 0;
-        for (j = 0; j < dim2 && controllo == 0; j++)
+        esci = False;
+        for (j = 0; j < dim2 && esci == False; j++)
         {
             if (sequenza1[i] == sequenza2_copia[j])
             {
@@ -56,7 +62,7 @@ int main()
                     sequenza2_copia[k] = sequenza2_copia[k + 1];
                 }
                 dim2--;
-                controllo++;
+                esci = True;
                 sequenza2_copia = (int *)realloc(sequenza2_copia, dim2 * sizeof(int));
             }
         }
