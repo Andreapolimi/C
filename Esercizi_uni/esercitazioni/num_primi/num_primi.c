@@ -23,7 +23,8 @@ int main()
     scanf("%d", &num);
     quoziente = num;
 
-    for (i = 2; i < quoziente && esci == False; i++) // al posto di < quoziente posso mettere <= (int)sqrt(num) e avrò lo stesso numero di iterazioni
+    for (i = 2; i < quoziente && esci == False; i++)
+    // al posto di < quoziente posso mettere <= (int)sqrt(num) e avrò lo stesso numero di iterazioni (usando una variabile in meno)
     {
 
         if (num % i == 0)
