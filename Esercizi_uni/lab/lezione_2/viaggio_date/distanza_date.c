@@ -71,43 +71,43 @@ typedef enum Bool
 
 void conta_tragitto(int data_piccola[], int data_grande[], int giorni_mese_grande, int giorni_anno_grande)
 {
-    int giorni_viaggio, mesi_viaggio, anni_viaggio, ore_viaggio, min_viaggio;
+    int viaggio[NUM_DATI];
 
-    anni_viaggio = data_grande[ANNO] - data_piccola[ANNO];
+    viaggio[ANNO] = data_grande[ANNO] - data_piccola[ANNO];
 
-    if (data_grande[MINUTO] > data_piccola[MINUTO])
-        min_viaggio = data_grande[MINUTO] - data_piccola[MINUTO];
+    if (data_grande[MINUTO] >= data_piccola[MINUTO])
+        viaggio[MINUTO] = data_grande[MINUTO] - data_piccola[MINUTO];
     else
     {
-        min_viaggio = data_grande[MINUTO] + MINUTI_ORA - data_piccola[MINUTO];
+        viaggio[MINUTO] = data_grande[MINUTO] + MINUTI_ORA - data_piccola[MINUTO];
         data_grande[ORA]--;
     }
 
-    if (data_grande[ORA] > data_piccola[ORA])
-        ore_viaggio = data_grande[ORA] - data_piccola[ORA];
+    if (data_grande[ORA] >= data_piccola[ORA])
+        viaggio[ORA] = data_grande[ORA] - data_piccola[ORA];
     else
     {
-        ore_viaggio = data_grande[ORA] + ORE_GIORNO - data_piccola[ORA];
+        viaggio[ORA] = data_grande[ORA] + ORE_GIORNO - data_piccola[ORA];
         data_grande[GIORNO]--;
     }
 
-    if (data_grande[GIORNO] > data_piccola[GIORNO])
-        giorni_viaggio = data_grande[GIORNO] - data_piccola[GIORNO];
+    if (data_grande[GIORNO] >= data_piccola[GIORNO])
+        viaggio[GIORNO] = data_grande[GIORNO] - data_piccola[GIORNO];
     else
     {
-        giorni_viaggio = data_grande[GIORNO] + giorni_mese_grande - data_piccola[GIORNO];
+        viaggio[GIORNO] = data_grande[GIORNO] + giorni_mese_grande - data_piccola[GIORNO];
         data_grande[MESE]--;
     }
 
-    if (data_grande[MESE] > data_piccola[MESE])
-        mesi_viaggio = data_grande[MESE] - data_piccola[MESE];
+    if (data_grande[MESE] >= data_piccola[MESE])
+        viaggio[MESE] = data_grande[MESE] - data_piccola[MESE];
     else
     {
-        mesi_viaggio = data_grande[MESE] + giorni_anno_grande - data_piccola[MESE];
-        anni_viaggio--;
+        viaggio[MESE] = data_grande[MESE] + giorni_anno_grande - data_piccola[MESE];
+        viaggio[ANNO]--;
     }
 
-    printf("Ha viaggiato nel tempo di %d giorni, %d mesi,%d anni, %d ore e %d minuti", giorni_viaggio, mesi_viaggio, anni_viaggio, ore_viaggio, min_viaggio);
+    printf("Ha viaggiato nel tempo di %d giorni, %d mesi,%d anni, %d ore e %d minuti", viaggio[GIORNO], viaggio[MESE], viaggio[ANNO], viaggio[ORA], viaggio[MINUTO]);
 }
 
 int main()
@@ -118,7 +118,7 @@ int main()
     controllo giorni_mese[NUM_DATE], giorni_anno[NUM_DATE], minuti_totali[NUM_DATE];
 
     // acquisizione date
-    for (i = 0; i < NUM_DATE; i++)
+    for (i = INIZIALE; i < NUM_DATE; i++)
     {
         esci_while = False;
         while (esci_while == False)
