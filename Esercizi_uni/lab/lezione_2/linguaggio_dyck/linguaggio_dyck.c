@@ -1,8 +1,8 @@
 /*Esercizio 4 – Linguaggio di Dyck
 
 Nella teoria dei linguaggi formali il linguaggio di Dyck consiste in stringhe bilanciate di parentesi quadre ‘[‘ e ‘]’.
- Codificare un programma C che sappia riconoscere se una stringa inserita dall’utente appartiene al linguaggio di Dyck o meno,
-  e che stampi a video il risultato del controllo.
+Codificare un programma C che sappia riconoscere se una stringa inserita dall’utente appartiene al linguaggio di Dyck o meno,
+e che stampi a video il risultato del controllo.
 
 Esempio: La stringa [[[][]][]] appartiene al linguaggio di Dyck.
 La stringa [[[]][]]]] non appartiene al linguaggio di Dyck.*/
