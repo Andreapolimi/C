@@ -1,11 +1,15 @@
-/*Il Dottor Emmett Brown di "Ritorno al Futuro" ha bisogno del vostro aiuto per sviluppare il software
+/* Esercizio 1 - Viaggio nel tempo
+
+Il Dottor Emmett Brown di "Ritorno al Futuro" ha bisogno del vostro aiuto per sviluppare il software
  del “contachilometri temporale” per la sua DeLorean.
 Il programma riceve in input la data di partenza e la data di destinazione. Successivamente calcola
 e stampa a video la distanza tra le due date in anni, mesi, giorni, ore e minuti.
+
 Esempio:
 Inserisci data e date di partenza della DeLorean (DD-MM-YYYY hh:mm): 12-09-1988 23:45 Inserisci data
 e date di destinazione della DeLorean (DD-MM-YYYY hh:mm): 23-01-2022 23:58 Grande Giove! Hai viaggiato
  nel tempo per 33 anni 4 mesi 11 giorni 0 ore e 13 minuti!
+
 Requisiti:
 • le date vanno acquisite direttamente in formato DD-MM-YYYY hh:mm
 • va verificata la validità delle date inserite: se almeno una delle date non è valida, allora il
@@ -107,7 +111,7 @@ void conta_tragitto(int data_piccola[], int data_grande[], int giorni_mese_grand
         viaggio[ANNO]--;
     }
 
-    printf("Ha viaggiato nel tempo di %d giorni, %d mesi,%d anni, %d ore e %d minuti", viaggio[GIORNO], viaggio[MESE], viaggio[ANNO], viaggio[ORA], viaggio[MINUTO]);
+    printf("Ha viaggiato nel tempo di %d giorni, %d mesi,%d anni, %d ore e %d minuti", viaggio[ANNO], viaggio[MESE], viaggio[GIORNO], viaggio[ORA], viaggio[MINUTO]);
 }
 
 int main()
