@@ -1,4 +1,5 @@
 /* Esercizio 7 - Sequenza contenuta
+
 Scrivete un programma che legga da input due array, A da 10 elementi e B da 5 elementi.
 Il programma deve stampare "B è contenuto in A" se A contiene la sequenza contigua dei numeri di B,
 altrimenti stampa "B non è contenuto in A".

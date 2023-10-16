@@ -111,7 +111,7 @@ void conta_tragitto(int data_piccola[], int data_grande[], int giorni_mese_grand
         viaggio[ANNO]--;
     }
 
-    printf("Ha viaggiato nel tempo di %d giorni, %d mesi,%d anni, %d ore e %d minuti", viaggio[ANNO], viaggio[MESE], viaggio[GIORNO], viaggio[ORA], viaggio[MINUTO]);
+    printf("%d anni, %d mesi,%d giorni, %d ore e %d minuti", viaggio[ANNO], viaggio[MESE], viaggio[GIORNO], viaggio[ORA], viaggio[MINUTO]);
 }
 
 int main()
@@ -172,11 +172,17 @@ int main()
                             date[FINALE][ORA] * MINUTI_ORA + date[FINALE][MINUTO];
 
     if (minuti_totali[FINALE] > minuti_totali[INIZIALE])
+    {
+        printf("Viaggio avanti nel tempo di ");
         conta_tragitto(date[INIZIALE], date[FINALE], giorni_mese[FINALE], giorni_anno[FINALE]);
+    }
     else
     {
         if (minuti_totali[FINALE] < minuti_totali[INIZIALE])
+        {
+            printf("Viaggio indietro nel tempo di ");
             conta_tragitto(date[FINALE], date[INIZIALE], giorni_mese[INIZIALE], giorni_anno[INIZIALE]);
+        }
         else
             printf("Hai inserito due date identiche, non ha viaggiato nel tempo");
     }
