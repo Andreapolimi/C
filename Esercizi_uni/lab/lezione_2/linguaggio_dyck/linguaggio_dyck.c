@@ -29,7 +29,7 @@ int main()
     stringa = (char *)calloc(DIM_MAX, DIM_MAX * sizeof(char));
 
     printf("Inserisci la stringa da controllare: ");
-    scanf("%[^\n]s", stringa);
+    scanf("%s", stringa);
 
     stringa = (char *)realloc(stringa, ((int)strlen(stringa) + 1) * sizeof(char));
 
