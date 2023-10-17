@@ -8,6 +8,7 @@ in cui sono salvati gli orari di entrata e uscita dal posto di lavoro. Deve rest
 
 #define DIM_ID 6
 #define MIN_ORA 60
+#define DIM_MAX 50
 
 typedef int contatori;
 typedef int controllo;
@@ -48,7 +49,7 @@ int main()
     contatori i, num_dati;
     gestione_file file_name[] = "/Users/andreavaccai/Coding/C/Esercizi_casa/minuti_lavorati/raccolta_attraversamenti.txt";
     gestione_file file_mode[] = "r";
-    char id_scelto[DIM_ID];
+    char *id_scelto;
     riga *dati;
 
     // apertura file e controllo successo
@@ -76,9 +77,22 @@ int main()
         i++;
     }
 
-    printf("Inserire l'id del lavoratore da controllare (inserire 0 per visualizzarli tutti): ");
+    // acquisizione dell'id scelto
+    id_scelto = (char *)calloc(DIM_MAX, DIM_MAX * sizeof(char));
+
+    printf("Inserire l'id del lavoratore da controllare, composto da 6 caratteri alfanumerici (inserire 0 per visualizzarli tutti): ");
     scanf("%s", id_scelto);
 
+    while (strlen(id_scelto) > DIM_ID)
+    {
+        printf("L'ID ha dimensione massima 6 caratteri, riprova\n");
+        printf("Inserire l'id del lavoratore da controllare, composto da 6 caratteri alfanumerici (inserire 0 per visualizzarli tutti): ");
+        scanf("%s", id_scelto);
+    }
+
+    id_scelto = (char *)realloc(id_scelto, DIM_ID * sizeof(char));
+
+    // diramazione dei calcoli in base alla scelta dell'utente
     if (strcmp(id_scelto, "0") == 0)
     {
         esci_while = False;
@@ -94,8 +108,14 @@ int main()
             }
 
             // stampa del tempo lavorato
-            printf("Il lavoratore con id %s ha lavorato per ", dati[indice_entrata].id);
-            calcola_tempo_lavoro(dati[indice_entrata], dati[indice_uscita]);
+            if (indice_uscita == -1)
+                printf("Il lavoratore con id %s e' entrato alle %d:%d ma non ha ancora timbrato l'uscita", dati[indice_entrata].id, dati[indice_entrata].ora, dati[indice_entrata].min);
+            else
+            {
+                printf("Il lavoratore con id %s ha lavorato per ", dati[indice_entrata].id);
+                calcola_tempo_lavoro(dati[indice_entrata], dati[indice_uscita]);
+            }
+
             printf("\n");
 
             // rimozione righe già utilizzate
@@ -107,13 +127,16 @@ int main()
             }
             num_dati--;
 
-            for (i = indice_uscita - 1; i < num_dati - 1; i++)
+            if (indice_uscita != -1)
             {
-                dati[i].ora = dati[i + 1].ora;
-                dati[i].min = dati[i + 1].min;
-                strcpy(dati[i].id, dati[i + 1].id);
+                for (i = indice_uscita - 1; i < num_dati - 1; i++)
+                {
+                    dati[i].ora = dati[i + 1].ora;
+                    dati[i].min = dati[i + 1].min;
+                    strcpy(dati[i].id, dati[i + 1].id);
+                }
+                num_dati--;
             }
-            num_dati--;
 
             if (num_dati == 0)
                 esci_while = True;
@@ -138,8 +161,18 @@ int main()
                 }
             }
         }
-        printf("Il lavoratore con id %s ha lavorato per ", id_scelto);
-        calcola_tempo_lavoro(dati[indice_entrata], dati[indice_uscita]);
+        if (indice_entrata == -1)
+            printf("Lavoratore con ID inserito in input non trovato");
+        else
+        {
+            if (indice_uscita == -1)
+                printf("Il lavoratore e' entrato alle %d:%d, ma non ha ancora timbrato l'uscita", dati[indice_entrata].ora, dati[indice_entrata].min);
+            else
+            {
+                printf("Il lavoratore con id %s ha lavorato per ", id_scelto);
+                calcola_tempo_lavoro(dati[indice_entrata], dati[indice_uscita]);
+            }
+        }
     }
 
     free(dati);
