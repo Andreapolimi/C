@@ -1,8 +1,8 @@
-// Dati in input i vertici di un poligono nel pinao cartesiano calcolarne il perimetro
+// Dati in input i vertici di un poligono (nel pinao cartesiano) calcolarne il perimetro
 
 #include <stdio.h>
 #include <math.h>
-#include <stdlib.h>
+#include <stdlib.h> //libreria necessaria in questo esercizio esclusivamente per l'utilizzo dell'allocazione dinamica della memoria
 
 typedef struct pt
 {
@@ -15,6 +15,8 @@ int main()
 {
     contatori i;
     punto *punti_input;
+    /* per non usare il puntatore si può dichiarare 'punti_input[DIM_MAX]' come array a dimensione prefissata (del tipo
+    '#define DIM_MAX 50') molto alta oltre la quale l'utente non potrà lavorare, per praticità ho usato un vettore dinamico */
     int dim;
     float perimetro = 0;
 
@@ -29,6 +31,7 @@ int main()
         scanf("%d", &dim);
     }
 
+    // allocazione memoria dinamica, nel caso di vettori statici questo passaggio è da saltare
     punti_input = (punto *)calloc(dim, dim * sizeof(punto));
 
     // acquisizione punti
@@ -50,6 +53,8 @@ int main()
     }
 
     printf("Il perimetro ha dimensione %f", perimetro);
+
+    free(punti_input); // liberazione memoria dinamica, se si usa il vettore statico è da saltare
 
     return 0;
 }
