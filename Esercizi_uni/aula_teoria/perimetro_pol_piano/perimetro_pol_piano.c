@@ -20,8 +20,8 @@ int main()
 {
     bool controllo;
     contatori i;
-    int num_punti, pt_fav, indice_partenza, lati_calc, indice_prova;
-    float perimetro = 0, dist_prova, dist_confronto, prima_x, prima_y;
+    int num_punti, punti_favorevoli, indice_partenza, lati_calc, indice_fine_segmento;
+    float perimetro = 0, dist_segmento, dist_prova, prima_x, prima_y;
 
     // creazione del vettore di punti
     printf("Inserire il numero di vertici del poligono di cui calcolare il perimetro: ");
@@ -47,7 +47,7 @@ int main()
 
     // calcolo perimetro (o lunghezza nel caso della retta)
     indice_partenza = 0;
-    pt_fav = num_punti;
+    punti_favorevoli = num_punti;
     lati_calc = 0;
     prima_x = punti_input[indice_partenza].x;
     prima_y = punti_input[indice_partenza].y;
@@ -60,23 +60,23 @@ int main()
         // controllo punti in senso anti-orario con x maggiore, i punti favorevoli saranno quelli più vicini a quello iniziale
 
         // controllo dei punti di indice maggiore di quello di partenza
-        for (i = indice_partenza + 1; i < pt_fav; i++)
+        for (i = indice_partenza + 1; i < punti_favorevoli; i++)
         {
             if (punti_input[i].x >= punti_input[indice_partenza].x)
             {
                 if (controllo == False)
                 {
-                    indice_prova = i;
+                    indice_fine_segmento = i;
                     controllo = True;
-                    dist_prova = sqrt(pow(punti_input[indice_partenza].x - punti_input[i].x, 2) + pow(punti_input[indice_partenza].y - punti_input[i].y, 2));
+                    dist_segmento = sqrt(pow(punti_input[indice_partenza].x - punti_input[i].x, 2) + pow(punti_input[indice_partenza].y - punti_input[i].y, 2));
                 }
                 else
                 {
-                    dist_confronto = sqrt(pow(punti_input[indice_partenza].x - punti_input[i].x, 2) + pow(punti_input[indice_partenza].y - punti_input[i].y, 2));
-                    if (dist_prova > dist_confronto)
+                    dist_prova = sqrt(pow(punti_input[indice_partenza].x - punti_input[i].x, 2) + pow(punti_input[indice_partenza].y - punti_input[i].y, 2));
+                    if (dist_segmento > dist_prova)
                     {
-                        indice_prova = i;
-                        dist_prova = dist_confronto;
+                        indice_fine_segmento = i;
+                        dist_segmento = dist_prova;
                     }
                 }
             }
@@ -89,87 +89,86 @@ int main()
             {
                 if (controllo == False)
                 {
-                    indice_prova = i;
+                    indice_fine_segmento = i;
                     controllo = True;
-                    dist_prova = sqrt(pow(punti_input[indice_partenza].x - punti_input[i].x, 2) + pow(punti_input[indice_partenza].y - punti_input[i].y, 2));
+                    dist_segmento = sqrt(pow(punti_input[indice_partenza].x - punti_input[i].x, 2) + pow(punti_input[indice_partenza].y - punti_input[i].y, 2));
                 }
                 else
                 {
-                    dist_confronto = sqrt(pow(punti_input[indice_partenza].x - punti_input[i].x, 2) + pow(punti_input[indice_partenza].y - punti_input[i].y, 2));
-                    if (dist_prova > dist_confronto)
+                    dist_prova = sqrt(pow(punti_input[indice_partenza].x - punti_input[i].x, 2) + pow(punti_input[indice_partenza].y - punti_input[i].y, 2));
+                    if (dist_segmento > dist_prova)
                     {
-                        indice_prova = i;
-                        dist_prova = dist_confronto;
+                        indice_fine_segmento = i;
+                        dist_segmento = dist_prova;
                     }
                 }
             }
         }
 
-        // controllo in senso antiorario con x minore se non mi erano punti in senso orario, i punti favorevoli saranno quelli più vicini a quello iniziale
+        // controllo in senso antiorario con x minore se non vi erano punti per x maggiore, i punti favorevoli saranno quelli più vicini a quello iniziale
 
-        if (controllo == False)
+        // controllo dei punti di indice maggiore di quello di partenza
+        for (i = indice_partenza + 1; i < punti_favorevoli; i++)
         {
-            // controllo dei punti di indice maggiore di quello di partenza
-            for (i = indice_partenza + 1; i < pt_fav; i++)
+            if (punti_input[i].x < punti_input[indice_partenza].x)
             {
-                if (punti_input[i].x <= punti_input[indice_partenza].x)
+                if (controllo == False)
                 {
-                    if (controllo == False)
+                    controllo = True;
+                    indice_fine_segmento = i;
+                    dist_segmento = sqrt(pow(punti_input[indice_partenza].x - punti_input[i].x, 2) + pow(punti_input[indice_partenza].y - punti_input[i].y, 2));
+                }
+                else
+                {
+                    dist_prova = sqrt(pow(punti_input[indice_partenza].x - punti_input[i].x, 2) + pow(punti_input[indice_partenza].y - punti_input[i].y, 2));
+                    if (dist_segmento > dist_prova)
                     {
-                        indice_prova = i;
-                        dist_prova = sqrt(pow(punti_input[indice_partenza].x - punti_input[i].x, 2) + pow(punti_input[indice_partenza].y - punti_input[i].y, 2));
-                    }
-                    else
-                    {
-                        dist_confronto = sqrt(pow(punti_input[indice_partenza].x - punti_input[i].x, 2) + pow(punti_input[indice_partenza].y - punti_input[i].y, 2));
-                        if (dist_prova > dist_confronto)
-                        {
-                            indice_prova = i;
-                            dist_prova = dist_confronto;
-                        }
+                        indice_fine_segmento = i;
+                        dist_segmento = dist_prova;
                     }
                 }
             }
+        }
 
-            // controllo dei punti di indice minore di quello di partenza
+        // controllo dei punti di indice minore di quello di partenza
 
-            for (i = indice_partenza - 1; i >= 0; i--)
+        for (i = indice_partenza - 1; i >= 0; i--)
+        {
+            if (punti_input[i].x < punti_input[indice_partenza].x)
             {
-                if (punti_input[i].x <= punti_input[indice_partenza].x)
+                if (controllo == False)
                 {
-                    if (controllo == False)
+                    controllo = True;
+                    indice_fine_segmento = i;
+                    dist_segmento = sqrt(pow(punti_input[indice_partenza].x - punti_input[i].x, 2) + pow(punti_input[indice_partenza].y - punti_input[i].y, 2));
+                }
+                else
+                {
+                    dist_prova = sqrt(pow(punti_input[indice_partenza].x - punti_input[i].x, 2) + pow(punti_input[indice_partenza].y - punti_input[i].y, 2));
+                    if (dist_segmento > dist_prova)
                     {
-                        indice_prova = i;
-                        dist_prova = sqrt(pow(punti_input[indice_partenza].x - punti_input[i].x, 2) + pow(punti_input[indice_partenza].y - punti_input[i].y, 2));
-                    }
-                    else
-                    {
-                        dist_confronto = sqrt(pow(punti_input[indice_partenza].x - punti_input[i].x, 2) + pow(punti_input[indice_partenza].y - punti_input[i].y, 2));
-                        if (dist_prova > dist_confronto)
-                        {
-                            indice_prova = i;
-                            dist_prova = dist_confronto;
-                        }
+                        indice_fine_segmento = i;
+                        dist_segmento = dist_prova;
                     }
                 }
             }
         }
 
         // calcolo perimetro
-        perimetro += dist_prova;
+        perimetro += dist_segmento;
         lati_calc++;
 
         // elimino il punto di partenza già utiliizzato
-        for (i = indice_partenza; i < pt_fav - 1; i++)
+        for (i = indice_partenza; i < punti_favorevoli - 1; i++)
             punti_input[i] = punti_input[i + 1];
 
-        pt_fav--;
+        punti_favorevoli--;
 
         // inizializzo il prossimo punto di partenza
-        indice_partenza = indice_prova;
+        indice_partenza = indice_fine_segmento;
 
         // controllo se manca calcolare solo l'ultimo lato
-        if (pt_fav == 1)
+        if (punti_favorevoli == 1)
         {
             perimetro += sqrt(pow(punti_input[indice_partenza].x - prima_x, 2) + pow(punti_input[indice_partenza].y - prima_y, 2));
             lati_calc++;
