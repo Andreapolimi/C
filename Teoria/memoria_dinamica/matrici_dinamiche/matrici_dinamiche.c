@@ -15,11 +15,7 @@ int main()
 
     for (i = 0; i < righe; ++i)
     {
-        int *p;
-
-        p = (int *)calloc(colonne, colonne * sizeof(int));
-
-        matrice[i] = p;
+        matrice[i] = (int *)calloc(colonne, colonne * sizeof(int));
     }
 
     for (i = 0; i < righe; ++i)
