@@ -39,17 +39,17 @@ void calcola_tempo_lavoro(riga entrata, riga uscita)
 
     ore = uscita.ora - entrata.ora;
 
-    printf("%d ore e %d minuti", ore, min);
+    printf("%d ore e %d minuti\n", ore, min);
 }
 
 int main()
 {
-    controllo indice_entrata, indice_uscita;
-    bool esci_while;
-    contatori i, num_dati;
+    controllo indice_entrata, indice_uscita, turno;
+    bool esci_while, controllo;
+    contatori i, j, k, num_dati, num_id;
     gestione_file file_name[] = "/Users/andreavaccai/Coding/C/Esercizi_casa/minuti_lavorati/raccolta_attraversamenti.txt";
     gestione_file file_mode[] = "r";
-    char *id_scelto;
+    char *id_scelto, **id_totali;
     riga *dati;
 
     // apertura file e controllo successo
@@ -96,82 +96,92 @@ int main()
     if (strcmp(id_scelto, "0") == 0)
     {
         esci_while = False;
+        num_id = 0;
+        id_totali = (char **)calloc(num_id + 1, (num_id + 1) * sizeof(char *));
+        for (i = 0; i < num_dati; i++)
+        {
+            controllo = False;
+            for (j = 0; j < num_id && controllo == False; j++)
+            {
+                if (strcmp(id_totali[j], dati[i].id) == 0)
+                    controllo = True;
+            }
+            if (controllo == False)
+            {
+                num_id++;
+                id_totali = (char **)realloc(id_totali, num_id * sizeof(char *));
+                id_totali[num_id - 1] = (char *)calloc(strlen(dati[i].id), strlen(dati[i].id) * sizeof(char));
+                id_totali[num_id - 1] = dati[i].id;
+            }
+        }
+        k = 0;
         while (esci_while == False)
         {
             // ricerca id uguale al primo id della tabella
-            indice_entrata = 0;
-            indice_uscita = -1;
-            for (i = 1; i < num_dati && indice_uscita == -1; i++)
+            turno = 0;
+            controllo = False;
+            for (i = 0; i < num_dati; i++)
             {
-                if (strcmp(dati[i].id, dati[indice_entrata].id) == 0)
-                    indice_uscita = i;
+                if (strcmp(dati[i].id, id_totali[k]) == 0)
+                {
+                    if (controllo == False)
+                    {
+                        turno++;
+                        controllo = True;
+                        indice_entrata = i;
+                    }
+                    else
+                    {
+                        controllo = False;
+                        indice_uscita = i;
+                        printf("Il lavoratore con id %s nel %d° turno ha lavorato per ", dati[indice_entrata].id, turno);
+                        calcola_tempo_lavoro(dati[indice_entrata], dati[indice_uscita]);
+                    }
+                }
             }
 
             // stampa del tempo lavorato
-            if (indice_uscita == -1)
-                printf("Il lavoratore con id %s e' entrato alle %d:%d ma non ha ancora timbrato l'uscita", dati[indice_entrata].id, dati[indice_entrata].ora, dati[indice_entrata].min);
-            else
+            if (controllo == True)
+                printf("Il lavoratore con id %s nel %d° turno e' entrato alle %d:%d ma non ha ancora timbrato l'uscita\n", dati[indice_entrata].id, turno, dati[indice_entrata].ora, dati[indice_entrata].min);
+
+            k++;
+            if (k == num_id)
             {
-                printf("Il lavoratore con id %s ha lavorato per ", dati[indice_entrata].id);
-                calcola_tempo_lavoro(dati[indice_entrata], dati[indice_uscita]);
-            }
-
-            printf("\n");
-
-            // rimozione righe già utilizzate
-            for (i = indice_entrata; i < num_dati - 1; i++)
-            {
-                dati[i].ora = dati[i + 1].ora;
-                dati[i].min = dati[i + 1].min;
-                strcpy(dati[i].id, dati[i + 1].id);
-            }
-            num_dati--;
-
-            if (indice_uscita != -1)
-            {
-                for (i = indice_uscita - 1; i < num_dati - 1; i++)
-                {
-                    dati[i].ora = dati[i + 1].ora;
-                    dati[i].min = dati[i + 1].min;
-                    strcpy(dati[i].id, dati[i + 1].id);
-                }
-                num_dati--;
-            }
-
-            if (num_dati == 0)
                 esci_while = True;
-            else
-                dati = (riga *)realloc(dati, num_dati * sizeof(riga));
+                free(id_totali);
+            }
         }
     }
     else
     {
         // ricerca delle righe in cui è presente l'id selezionato
-        indice_entrata = -1;
-        indice_uscita = -1;
-        for (i = 0; i < num_dati && indice_uscita == -1; i++)
+        controllo = False;
+        turno = 0;
+        for (i = 0; i < num_dati; i++)
         {
             if (strcmp(dati[i].id, id_scelto) == 0)
             {
-                if (indice_entrata == -1)
+                if (controllo == False)
+                {
+                    turno++;
                     indice_entrata = i;
+                    controllo = True;
+                }
                 else
                 {
                     indice_uscita = i;
+                    controllo = False;
+                    printf("Il lavoratore nel %d° turno con id %s ha lavorato per ", turno, id_scelto);
+                    calcola_tempo_lavoro(dati[indice_entrata], dati[indice_uscita]);
                 }
             }
         }
-        if (indice_entrata == -1)
+        if (turno == 0)
             printf("Lavoratore con ID inserito in input non trovato");
         else
         {
-            if (indice_uscita == -1)
-                printf("Il lavoratore e' entrato alle %d:%d, ma non ha ancora timbrato l'uscita", dati[indice_entrata].ora, dati[indice_entrata].min);
-            else
-            {
-                printf("Il lavoratore con id %s ha lavorato per ", id_scelto);
-                calcola_tempo_lavoro(dati[indice_entrata], dati[indice_uscita]);
-            }
+            if (controllo == True)
+                printf("Il lavoratore nel %d° turno e' entrato alle %d:%d, ma non ha ancora timbrato l'uscita", turno, dati[indice_entrata].ora, dati[indice_entrata].min);
         }
     }
 
