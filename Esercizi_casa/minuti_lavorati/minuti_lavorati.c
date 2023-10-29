@@ -81,7 +81,7 @@ int main()
     {
         dati = (riga *)realloc(dati, (i + 1) * sizeof(riga));
 
-        fscanf(file_handle, "%d %d %s", &dati[i].ora, &dati[i].min, dati[i].id);
+        fscanf(file_handle, "%d:%d %s", &dati[i].ora, &dati[i].min, dati[i].id);
 
         num_dati += 1;
         i++;
