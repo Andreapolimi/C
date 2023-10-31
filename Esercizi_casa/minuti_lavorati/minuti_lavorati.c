@@ -18,7 +18,7 @@ in cui sono salvati gli orari di entrata e uscita dal posto di lavoro. Deve rest
 
 // dichiarazione tipi di dati
 typedef int contatori;
-
+typedef char gestione_file;
 typedef int traccia_dati;
 
 typedef enum bool
@@ -26,8 +26,6 @@ typedef enum bool
     False,
     True
 } bool;
-
-typedef char gestione_file;
 
 typedef struct riga
 {

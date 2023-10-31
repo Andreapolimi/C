@@ -50,15 +50,10 @@ int GIORNI_MESI[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 #define INIZIALE 0
 #define FINALE 1
 #define NUM_DATE 2
-#define NUM_DATI 5
-enum data
+typedef struct data
 {
-    GIORNO,
-    MESE,
-    ANNO,
-    ORA,
-    MINUTO
-};
+    int giorno, mese, anno, ora, minuto;
+} data;
 
 // costante per bisistilità
 #define FEBBRAIO 2
@@ -73,50 +68,50 @@ typedef enum Bool
     True
 } bool;
 
-void conta_tragitto(int data_piccola[], int data_grande[], int giorni_mese_grande, int giorni_anno_grande)
+void conta_tragitto(data data_piccola, data data_grande, int giorni_mese_grande, int giorni_anno_grande)
 {
-    int viaggio[NUM_DATI];
+    data viaggio;
 
-    viaggio[ANNO] = data_grande[ANNO] - data_piccola[ANNO];
+    viaggio.anno = data_grande.anno - data_piccola.anno;
 
-    if (data_grande[MINUTO] >= data_piccola[MINUTO])
-        viaggio[MINUTO] = data_grande[MINUTO] - data_piccola[MINUTO];
+    if (data_grande.minuto >= data_piccola.minuto)
+        viaggio.minuto = data_grande.minuto - data_piccola.minuto;
     else
     {
-        viaggio[MINUTO] = data_grande[MINUTO] + MINUTI_ORA - data_piccola[MINUTO];
-        data_grande[ORA]--;
+        viaggio.minuto = data_grande.minuto + MINUTI_ORA - data_piccola.minuto;
+        data_grande.ora--;
     }
 
-    if (data_grande[ORA] >= data_piccola[ORA])
-        viaggio[ORA] = data_grande[ORA] - data_piccola[ORA];
+    if (data_grande.ora >= data_piccola.ora)
+        viaggio.ora = data_grande.ora - data_piccola.ora;
     else
     {
-        viaggio[ORA] = data_grande[ORA] + ORE_GIORNO - data_piccola[ORA];
-        data_grande[GIORNO]--;
+        viaggio.ora = data_grande.ora + ORE_GIORNO - data_piccola.ora;
+        data_grande.giorno--;
     }
 
-    if (data_grande[GIORNO] >= data_piccola[GIORNO])
-        viaggio[GIORNO] = data_grande[GIORNO] - data_piccola[GIORNO];
+    if (data_grande.giorno >= data_piccola.giorno)
+        viaggio.giorno = data_grande.giorno - data_piccola.giorno;
     else
     {
-        viaggio[GIORNO] = data_grande[GIORNO] + giorni_mese_grande - data_piccola[GIORNO];
-        data_grande[MESE]--;
+        viaggio.giorno = data_grande.giorno + giorni_mese_grande - data_piccola.giorno;
+        data_grande.mese--;
     }
 
-    if (data_grande[MESE] >= data_piccola[MESE])
-        viaggio[MESE] = data_grande[MESE] - data_piccola[MESE];
+    if (data_grande.mese >= data_piccola.mese)
+        viaggio.mese = data_grande.mese - data_piccola.mese;
     else
     {
-        viaggio[MESE] = data_grande[MESE] + giorni_anno_grande - data_piccola[MESE];
-        viaggio[ANNO]--;
+        viaggio.mese = data_grande.mese + giorni_anno_grande - data_piccola.mese;
+        viaggio.anno--;
     }
 
-    printf("%d anni, %d mesi,%d giorni, %d ore e %d minuti", viaggio[ANNO], viaggio[MESE], viaggio[GIORNO], viaggio[ORA], viaggio[MINUTO]);
+    printf("%d anni, %d mesi,%d giorni, %d ore e %d minuti", viaggio.anno, viaggio.mese, viaggio.giorno, viaggio.ora, viaggio.minuto);
 }
 
 int main()
 {
-    int date[NUM_DATE][NUM_DATI];
+    data date[NUM_DATE];
     bool esci_while, esci_for;
     contatori i, j;
     controllo giorni_mese[NUM_DATE], giorni_anno[NUM_DATE], minuti_totali[NUM_DATE];
@@ -128,14 +123,14 @@ int main()
         while (esci_while == False)
         {
             printf("Inserire la data %d in formato DD-MM-YYYY hh:mm (attento alla corrispondenza giorni-date): ", i + 1);
-            scanf("%d-%d-%d %d:%d", &date[i][GIORNO], &date[i][MESE], &date[i][ANNO], &date[i][ORA], &date[i][MINUTO]);
+            scanf("%d-%d-%d %d:%d", &date[i].giorno, &date[i].mese, &date[i].anno, &date[i].ora, &date[i].minuto);
 
             esci_for = False;
             for (j = MIN_MESI; j < (MESI_ANNO + 1) && esci_for == False; j++)
             {
-                if (date[i][MESE] == j)
+                if (date[i].mese == j)
                 {
-                    if (j == FEBBRAIO && date[i][ANNO] % BISESTILE == 0)
+                    if (j == FEBBRAIO && date[i].anno % BISESTILE == 0)
                     {
                         giorni_mese[i] = GIORNI_MESI[j] + 1;
                         giorni_anno[i] = GIORNI_ANNO + 1;
@@ -150,26 +145,26 @@ int main()
             }
 
             if (
-                date[i][GIORNO] < MIN_GIORNI || date[i][GIORNO] > giorni_mese[i] ||
-                date[i][MESE] < MIN_MESI || date[i][MESE] > MAX_MESI ||
-                date[i][ANNO] < MIN_ANNO || date[i][ANNO] > MAX_ANNO ||
-                date[i][ORA] < MIN_ORE || date[i][ORA] > MAX_ORE ||
-                date[i][MINUTO] < MIN_MINUTI || date[i][MINUTO] > MAX_MINUTI)
+                date[i].giorno < MIN_GIORNI || date[i].giorno > giorni_mese[i] ||
+                date[i].mese < MIN_MESI || date[i].mese > MAX_MESI ||
+                date[i].anno < MIN_ANNO || date[i].anno > MAX_ANNO ||
+                date[i].ora < MIN_ORE || date[i].ora > MAX_ORE ||
+                date[i].minuto < MIN_MINUTI || date[i].minuto > MAX_MINUTI)
                 printf("Inserire una data valida\n");
             else
                 esci_while = True;
         }
     }
 
-    minuti_totali[INIZIALE] = date[INIZIALE][ANNO] * giorni_anno[INIZIALE] * ORE_GIORNO * MINUTI_ORA +
-                              date[INIZIALE][MESE] * giorni_mese[INIZIALE] * ORE_GIORNO * MINUTI_ORA +
-                              date[INIZIALE][GIORNO] * ORE_GIORNO * MINUTI_ORA +
-                              date[INIZIALE][ORA] * MINUTI_ORA + date[INIZIALE][MINUTO];
+    minuti_totali[INIZIALE] = date[INIZIALE].anno * giorni_anno[INIZIALE] * ORE_GIORNO * MINUTI_ORA +
+                              date[INIZIALE].mese * giorni_mese[INIZIALE] * ORE_GIORNO * MINUTI_ORA +
+                              date[INIZIALE].giorno * ORE_GIORNO * MINUTI_ORA +
+                              date[INIZIALE].ora * MINUTI_ORA + date[INIZIALE].minuto;
 
-    minuti_totali[FINALE] = date[FINALE][ANNO] * giorni_anno[FINALE] * ORE_GIORNO * MINUTI_ORA +
-                            date[FINALE][MESE] * giorni_mese[FINALE] * ORE_GIORNO * MINUTI_ORA +
-                            date[FINALE][GIORNO] * ORE_GIORNO * MINUTI_ORA +
-                            date[FINALE][ORA] * MINUTI_ORA + date[FINALE][MINUTO];
+    minuti_totali[FINALE] = date[FINALE].anno * giorni_anno[FINALE] * ORE_GIORNO * MINUTI_ORA +
+                            date[FINALE].mese * giorni_mese[FINALE] * ORE_GIORNO * MINUTI_ORA +
+                            date[FINALE].giorno * ORE_GIORNO * MINUTI_ORA +
+                            date[FINALE].ora * MINUTI_ORA + date[FINALE].minuto;
 
     if (minuti_totali[FINALE] > minuti_totali[INIZIALE])
     {
