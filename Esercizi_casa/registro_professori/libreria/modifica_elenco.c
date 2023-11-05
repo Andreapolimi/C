@@ -1,30 +1,4 @@
-// dichiarazione librerie
-#include <stdio.h>
-#include <stdlib.h>
-
-// dichiarazione costanti
-#define DIM_MAX 50
-
-// dichiarazione tipi variabili aggiuntivi
-
-typedef struct data
-{
-    int giorno, mese, anno;
-} data;
-
-typedef struct val
-{
-    data data_valutazione;
-    int voto;
-    char *materia;
-} valutazioni;
-
-typedef struct stu
-{
-    char *nome, *cognome;
-    data data_nascita;
-    valutazioni *voti;
-} studente;
+#include "lib_registro.h"
 
 void aggiunta_studente(studente **elenco, int num_studenti)
 {

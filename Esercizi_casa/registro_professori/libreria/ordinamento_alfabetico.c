@@ -1,31 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-
-typedef enum bool
-{
-    False,
-    True
-} bool;
-typedef int contatori;
-
-typedef struct data
-{
-    int giorno, mese, anno;
-} data;
-
-typedef struct val
-{
-    data data_valutazione;
-    int voto;
-    char *materia;
-} valutazioni;
-
-typedef struct stu
-{
-    char *nome, *cognome;
-    data data_nascita;
-    valutazioni *voti;
-} studente;
+#include "lib_registro.h"
 
 void ordina_parole(int i, studente elenco[], int num_studenti, char *parola, char *parola_prima, char *parola_dopo)
 {
@@ -92,22 +65,3 @@ void riordina_elenco(studente elenco[], int num_studenti)
         }
     }
 }
-
-// main per testare la funzione
-/*int main()
-{
-    contatori i;
-    studente elenco[] = {{.nome = "Zabn", .cognome = "Rossi"},
-                         {.nome = "Tavernello", .cognome = "Rossi"},
-                         {.nome = "Rossi", .cognome = "Gianni"}};
-
-    riordina_elenco(elenco, 3);
-
-    for (i = 0; i < 3; i++)
-    {
-        printf("%s %s", elenco[i].cognome, elenco[i].nome);
-        printf("\n");
-    }
-
-    return 0;
-}*/
