@@ -1,4 +1,5 @@
 #include "lib_registro.h"
+#include <stdio.h>
 
 void stampa_elenco(studente *elenco, int num_studenti)
 {

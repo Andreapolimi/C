@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 #define DIM_MAX 50
 #define MAX_CHAR_CLS 3
 
@@ -16,7 +12,7 @@ typedef struct data
     int giorno, mese, anno;
 } data;
 
-typedef struct valutazion
+typedef struct valutazioni
 {
     data data_valutazione;
     int voto;

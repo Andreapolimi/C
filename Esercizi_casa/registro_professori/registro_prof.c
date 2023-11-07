@@ -8,9 +8,7 @@ int main()
     gestione_file *file_classe;
 
     file_classe = ottieni_file_classe();
-
     elenco = struttura_elenco(&num_studenti, file_classe);
-
     stampa_elenco(elenco, num_studenti);
 
     return 0;

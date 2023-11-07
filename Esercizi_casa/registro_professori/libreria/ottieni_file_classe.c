@@ -1,12 +1,15 @@
 #include "lib_registro.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 char *ottieni_file_classe()
 {
-    gestione_file nome_file[] = "classi/percorsi_classi.txt";
-    gestione_file file_mode[] = "r";
-    gestione_file classe_scelta[MAX_CHAR_CLS], classe_confronto[MAX_CHAR_CLS];
+    char nome_file[] = "file_classi/percorsi_classi.txt";
+    char file_mode[] = "r";
+    char classe_scelta[MAX_CHAR_CLS], classe_confronto[MAX_CHAR_CLS];
     FILE *file_handle;
-    bool esci_while;
+    enum bool esci_while;
     char *file_classe;
 
     file_classe = (char *)calloc(DIM_MAX, DIM_MAX * sizeof(char));

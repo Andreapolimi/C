@@ -1,4 +1,7 @@
 #include "lib_registro.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int struttura_valutazioni(valutazioni **voti, char *nome_file, int i)
 {
@@ -65,7 +68,7 @@ studente *struttura_elenco(contatori *i, gestione_file nome_file[])
 
         elenco[*i].voti = (valutazioni *)calloc(1, sizeof(valutazioni));
 
-        elenco[*i].conta_valutazioni = crea_struttura_valutazioni(&elenco[*i].voti, elenco[*i].percorso_file, *i);
+        elenco[*i].conta_valutazioni = struttura_valutazioni(&elenco[*i].voti, elenco[*i].percorso_file, *i);
 
         (*i)++;
     }

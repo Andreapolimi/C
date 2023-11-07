@@ -9,7 +9,10 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "libreria/crea_struttura_elenco.c",
+                "libreria/ottieni_file_classe.c",
+                "libreria/stampa_info.c"
             ],
             "options": {
                 "cwd": "${fileDirname}"
