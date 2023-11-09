@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int struttura_valutazioni(valutazioni **voti, char *nome_file, int i)
+int struttura_valutazioni(valutazioni **voti, char *nome_file)
 {
     gestione_file file_mode[] = "r";
     FILE *file_handle;
@@ -68,7 +68,7 @@ studente *struttura_elenco(contatori *i, gestione_file nome_file[])
 
         elenco[*i].voti = (valutazioni *)calloc(1, sizeof(valutazioni));
 
-        elenco[*i].conta_valutazioni = struttura_valutazioni(&elenco[*i].voti, elenco[*i].percorso_file, *i);
+        elenco[*i].conta_valutazioni = struttura_valutazioni(&elenco[*i].voti, elenco[*i].percorso_file);
 
         (*i)++;
     }
@@ -76,6 +76,8 @@ studente *struttura_elenco(contatori *i, gestione_file nome_file[])
     printf("\n");
 
     fclose(file_handle);
+
+    printf("Struttura studente creata con successo\n");
 
     return elenco;
 }

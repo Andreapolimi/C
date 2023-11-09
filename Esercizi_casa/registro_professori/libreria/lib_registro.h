@@ -32,14 +32,13 @@ typedef int contatori;
 typedef int controllo;
 typedef char gestione_file;
 
-void ordina_parole(int, studente[], int, char *, char *, char *);
 void riordina_elenco(studente[], int);
 
-char *ottieni_file_classe();
+char *ottieni_file_classe(char[]);
 
-int struttura_valutazioni(valutazioni **, char *, int);
 studente *struttura_elenco(contatori *, gestione_file[]);
 
 void stampa_elenco(studente *, int);
 
-void aggiunta_studente(studente **, int);
+void aggiunta_studente(studente[], int, char[], char[]);
+void riscrivi_file_classe(studente[], char[], int);

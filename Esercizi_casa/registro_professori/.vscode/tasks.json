@@ -12,7 +12,9 @@
                 "${fileDirname}/${fileBasenameNoExtension}",
                 "libreria/crea_struttura_elenco.c",
                 "libreria/ottieni_file_classe.c",
-                "libreria/stampa_info.c"
+                "libreria/stampa_info.c",
+                "libreria/modifica_elenco.c",
+                "libreria/ordinamento_alfabetico.c"
             ],
             "options": {
                 "cwd": "${fileDirname}"

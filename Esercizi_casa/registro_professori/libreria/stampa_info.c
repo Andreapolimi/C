@@ -16,4 +16,6 @@ void stampa_elenco(studente *elenco, int num_studenti)
         }
         printf("\n");
     }
+
+    printf("\n Stampa terminata\n");
 }

@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-char *ottieni_file_classe()
+char *ottieni_file_classe(char classe_scelta[])
 {
     char nome_file[] = "file_classi/percorsi_classi.txt";
     char file_mode[] = "r";
-    char classe_scelta[MAX_CHAR_CLS], classe_confronto[MAX_CHAR_CLS];
+    char classe_confronto[MAX_CHAR_CLS];
     FILE *file_handle;
     enum bool esci_while;
     char *file_classe;
@@ -22,10 +22,6 @@ char *ottieni_file_classe()
     }
     else
         printf("%s letto con successo\n\n", nome_file);
-
-    printf("Quale classe vuoi analizzare? ");
-    scanf("%s", classe_scelta);
-    printf("\n");
 
     esci_while = False;
     while (!feof(file_handle) && esci_while == False)

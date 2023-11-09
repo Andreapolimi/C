@@ -1,2 +1,3 @@
-vaccai andrea 12:01:2004 file_classi/3C/file_studenti/vaccai_andrea.txt
-avon lsr 12:01:2004 file_classi/3C/file_studenti/avon_lsr.txt
+avon lsr 12:1:2004 file_classi/3C/file_studenti/avon_lsr.txt
+moro aldo 12:1:2004 file_classi/3C/file_studenti/moro_aldo.txt
+vaccai andrea 12:1:2004 file_classi/3C/file_studenti/vaccai_andrea.txt

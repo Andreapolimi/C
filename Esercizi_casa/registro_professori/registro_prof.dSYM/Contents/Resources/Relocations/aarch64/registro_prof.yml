@@ -2,13 +2,19 @@
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/andreavaccai/Coding/C/Esercizi_casa/registro_professori/registro_prof'
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003374, symSize: 0x4C }
-  - { offsetInCU: 0x33, offset: 0x33, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003374, symSize: 0x4C }
-  - { offsetInCU: 0x26, offset: 0x1A1, size: 0x8, addend: 0x0, symName: _struttura_valutazioni, symObjAddr: 0x0, symBinAddr: 0x1000033C0, symSize: 0x220 }
-  - { offsetInCU: 0x124, offset: 0x29F, size: 0x8, addend: 0x0, symName: _struttura_valutazioni, symObjAddr: 0x0, symBinAddr: 0x1000033C0, symSize: 0x220 }
-  - { offsetInCU: 0x192, offset: 0x30D, size: 0x8, addend: 0x0, symName: _struttura_elenco, symObjAddr: 0x220, symBinAddr: 0x1000035E0, symSize: 0x400 }
-  - { offsetInCU: 0x26, offset: 0x5B3, size: 0x8, addend: 0x0, symName: _ottieni_file_classe, symObjAddr: 0x0, symBinAddr: 0x1000039E0, symSize: 0x210 }
-  - { offsetInCU: 0x7F, offset: 0x60C, size: 0x8, addend: 0x0, symName: _ottieni_file_classe, symObjAddr: 0x0, symBinAddr: 0x1000039E0, symSize: 0x210 }
-  - { offsetInCU: 0x26, offset: 0x8B2, size: 0x8, addend: 0x0, symName: _stampa_elenco, symObjAddr: 0x0, symBinAddr: 0x100003BF0, symSize: 0x228 }
-  - { offsetInCU: 0x41, offset: 0x8CD, size: 0x8, addend: 0x0, symName: _stampa_elenco, symObjAddr: 0x0, symBinAddr: 0x100003BF0, symSize: 0x228 }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x10000282C, symSize: 0xD4 }
+  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x10000282C, symSize: 0xD4 }
+  - { offsetInCU: 0x26, offset: 0x1D0, size: 0x8, addend: 0x0, symName: _struttura_valutazioni, symObjAddr: 0x0, symBinAddr: 0x100002900, symSize: 0x21C }
+  - { offsetInCU: 0x124, offset: 0x2CE, size: 0x8, addend: 0x0, symName: _struttura_valutazioni, symObjAddr: 0x0, symBinAddr: 0x100002900, symSize: 0x21C }
+  - { offsetInCU: 0x184, offset: 0x32E, size: 0x8, addend: 0x0, symName: _struttura_elenco, symObjAddr: 0x21C, symBinAddr: 0x100002B1C, symSize: 0x404 }
+  - { offsetInCU: 0x26, offset: 0x5D4, size: 0x8, addend: 0x0, symName: _ottieni_file_classe, symObjAddr: 0x0, symBinAddr: 0x100002F20, symSize: 0x1E4 }
+  - { offsetInCU: 0x67, offset: 0x615, size: 0x8, addend: 0x0, symName: _ottieni_file_classe, symObjAddr: 0x0, symBinAddr: 0x100002F20, symSize: 0x1E4 }
+  - { offsetInCU: 0x26, offset: 0x8D4, size: 0x8, addend: 0x0, symName: _stampa_elenco, symObjAddr: 0x0, symBinAddr: 0x100003104, symSize: 0x234 }
+  - { offsetInCU: 0x41, offset: 0x8EF, size: 0x8, addend: 0x0, symName: _stampa_elenco, symObjAddr: 0x0, symBinAddr: 0x100003104, symSize: 0x234 }
+  - { offsetInCU: 0x26, offset: 0xA50, size: 0x8, addend: 0x0, symName: _aggiunta_studente, symObjAddr: 0x0, symBinAddr: 0x100003338, symSize: 0x324 }
+  - { offsetInCU: 0x123, offset: 0xB4D, size: 0x8, addend: 0x0, symName: _aggiunta_studente, symObjAddr: 0x0, symBinAddr: 0x100003338, symSize: 0x324 }
+  - { offsetInCU: 0x19B, offset: 0xBC5, size: 0x8, addend: 0x0, symName: _riscrivi_file_classe, symObjAddr: 0x324, symBinAddr: 0x10000365C, symSize: 0x13C }
+  - { offsetInCU: 0x26, offset: 0xE67, size: 0x8, addend: 0x0, symName: _ordina_parole, symObjAddr: 0x0, symBinAddr: 0x100003798, symSize: 0x30C }
+  - { offsetInCU: 0x61, offset: 0xEA2, size: 0x8, addend: 0x0, symName: _ordina_parole, symObjAddr: 0x0, symBinAddr: 0x100003798, symSize: 0x30C }
+  - { offsetInCU: 0x104, offset: 0xF45, size: 0x8, addend: 0x0, symName: _riordina_elenco, symObjAddr: 0x30C, symBinAddr: 0x100003AA4, symSize: 0x150 }
 ...

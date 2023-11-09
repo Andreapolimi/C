@@ -1,4 +1,7 @@
 #include "lib_registro.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 void ordina_parole(int i, studente elenco[], int num_studenti, char *parola, char *parola_prima, char *parola_dopo)
 {
@@ -64,4 +67,6 @@ void riordina_elenco(studente elenco[], int num_studenti)
             ordina_parole(i, elenco, num_studenti, elenco[i].cognome, elenco[i - 1].cognome, elenco[i + 1].cognome);
         }
     }
+
+    printf("Ordinamento effettuato con successo");
 }
