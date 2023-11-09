@@ -30,14 +30,15 @@ massima dell’array, definita dalla costante predefinita N.*/
 #include <stdio.h>
 #include <stdlib.h>
 
-#define NUM_EL 8
+#define NUM_EL_ARRAY 8
+#define NUM_EL_NODE 2
 #define INIZIALE 0
 #define FINALE 1
 
 typedef int cont_t;
 typedef struct node
 {
-    int elementi[2];
+    int elementi[NUM_EL_NODE];
     struct node *nodo_succ;
 } node_t;
 
@@ -51,7 +52,7 @@ node_t *crea_lista(int *array, int y)
     array_nodi = (node_t *)calloc(num_nodi, num_nodi * sizeof(node_t));
     testa = &array_nodi[j];
 
-    for (i = 0; i < NUM_EL; i++)
+    for (i = 0; i < NUM_EL_ARRAY; i++)
     {
         if (somma + array[i] <= y)
         {
@@ -84,7 +85,7 @@ void stampa_lista(node_t *testa)
 
     while (testa != NULL)
     {
-        for (i = 0; i < 2; i++)
+        for (i = 0; i < NUM_EL_NODE; i++)
             printf("%d\t", testa->elementi[i]);
         testa = testa->nodo_succ;
         printf("\n");
@@ -93,7 +94,7 @@ void stampa_lista(node_t *testa)
 
 int main(int argc, char *argv[])
 {
-    int y, array[NUM_EL];
+    int y, array[NUM_EL_ARRAY];
     FILE *file_handle;
     node_t *testa;
     cont_t i;
