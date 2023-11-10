@@ -42,37 +42,39 @@ typedef struct node
     struct node *nodo_succ;
 } node_t;
 
+void aggiungi_nodo(node_t *temp)
+{
+    node_t nuovo_nodo;
+
+    temp->nodo_succ = (node_t *)calloc(1, sizeof(node_t));
+}
+
 node_t *crea_lista(int *array, int y)
 {
-    node_t *array_nodi;
-    node_t *testa;
+    node_t *testa, *temp;
     cont_t i;
-    int somma = 0, num_nodi = 1;
+    int somma = 0;
 
-    array_nodi = (node_t *)calloc(num_nodi, num_nodi * sizeof(node_t));
-    testa = array_nodi;
+    testa = (node_t *)calloc(1, sizeof(node_t));
+    temp = testa;
 
     for (i = 0; i < NUM_EL_ARRAY; i++)
     {
         if (somma + array[i] <= y)
         {
-            testa->elementi[FINALE] = i;
+            temp->elementi[FINALE] = i;
             somma += array[i];
         }
         else
         {
-            testa->elementi[FINALE] = i - 1;
+            temp->elementi[FINALE] = i - 1;
             somma = array[i];
-            num_nodi++;
-            array_nodi = (node_t *)realloc(array_nodi, num_nodi * sizeof(node_t));
-            testa->nodo_succ = &array_nodi[num_nodi - 1];
-            testa = testa->nodo_succ;
-            testa->elementi[INIZIALE] = i;
+            aggiungi_nodo(temp);
+            temp = temp->nodo_succ;
+            temp->elementi[INIZIALE] = i;
         }
     }
-    testa->nodo_succ = NULL;
-
-    testa = array_nodi;
+    temp->nodo_succ = NULL;
 
     return testa;
 }
