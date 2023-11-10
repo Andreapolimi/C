@@ -71,10 +71,10 @@ node_t *crea_lista(int *array, int y)
             somma = array[i];
             aggiungi_nodo(temp);
             temp = temp->nodo_succ;
+            temp->nodo_succ = NULL;
             temp->elementi[INIZIALE] = i;
         }
     }
-    temp->nodo_succ = NULL;
 
     return testa;
 }
