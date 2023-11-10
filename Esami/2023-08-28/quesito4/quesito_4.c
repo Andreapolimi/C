@@ -46,11 +46,11 @@ node_t *crea_lista(int *array, int y)
 {
     node_t *array_nodi;
     node_t *testa;
-    cont_t i, j = 0;
+    cont_t i;
     int somma = 0, num_nodi = 1;
 
     array_nodi = (node_t *)calloc(num_nodi, num_nodi * sizeof(node_t));
-    testa = &array_nodi[j];
+    testa = array_nodi;
 
     for (i = 0; i < NUM_EL_ARRAY; i++)
     {
@@ -58,12 +58,10 @@ node_t *crea_lista(int *array, int y)
         {
             testa->elementi[FINALE] = i;
             somma += array[i];
-            j++;
         }
         else
         {
             testa->elementi[FINALE] = i - 1;
-            j = 0;
             somma = array[i];
             num_nodi++;
             array_nodi = (node_t *)realloc(array_nodi, num_nodi * sizeof(node_t));
