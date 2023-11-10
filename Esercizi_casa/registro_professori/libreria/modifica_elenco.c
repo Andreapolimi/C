@@ -3,10 +3,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-void aggiunta_studente(studente elenco[], int num_studenti, char file_classe[], char classe[])
+studente *aggiunta_studente(studente *elenco, int num_studenti, char file_classe[], char classe[])
 {
     FILE *nuovo_studente;
-    gestione_file file_mode[] = "x";
+    gestione_file file_mode[] = "w";
     int i;
 
     elenco = (studente *)realloc(elenco, (num_studenti) * sizeof(studente));
@@ -38,6 +38,8 @@ void aggiunta_studente(studente elenco[], int num_studenti, char file_classe[], 
     fclose(nuovo_studente);
 
     printf("Studente aggiunto alla struttura dati con successo\n");
+
+    return elenco;
 }
 
 void riscrivi_file_classe(studente elenco[], char file_classe[], int num_studenti)

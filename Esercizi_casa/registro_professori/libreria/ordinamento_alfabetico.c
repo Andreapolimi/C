@@ -3,70 +3,43 @@
 #include <stdlib.h>
 #include <string.h>
 
-void ordina_parole(int i, studente elenco[], int num_studenti, char *parola, char *parola_prima, char *parola_dopo)
-{
-    contatori j, k;
-    bool ordine_corretto;
-    studente temporaneo;
-
-    ordine_corretto = False;
-
-    for (j = 0; j < strlen(parola) && ordine_corretto == False; j++)
-    {
-        if (parola[j] > parola_dopo[j])
-        {
-            temporaneo = elenco[i + 1];
-            elenco[i + 1] = elenco[i];
-            elenco[i] = temporaneo;
-            if (i != 0)
-            {
-                for (k = 0; k < strlen(parola) && ordine_corretto == False; k++)
-                {
-                    if (parola_dopo[k] < parola_prima[k])
-                    {
-                        temporaneo = elenco[i - 1];
-                        elenco[i - 1] = elenco[i];
-                        elenco[i] = temporaneo;
-                        ordine_corretto = True;
-                    }
-                    else
-                    {
-                        if (parola_dopo[k] != parola_prima[k])
-                            ordine_corretto = True;
-                    }
-                }
-            }
-            else
-                ordine_corretto = True;
-        }
-        else
-        {
-            if (parola[j] != parola_dopo[j])
-                ordine_corretto = True;
-        }
-    }
-}
-
 // la funzione viene chiamata dopo aver controllato che nessuno degli studenti è stato inserito due volte,
 // quindi non serve effettuare nuovamente il controllo
-void riordina_elenco(studente elenco[], int num_studenti)
-{
-    contatori i;
+// Ogni qual volta viene chiamata tutti gli elementi dell'elenco sono già ordinati, perciò basta inserire l'utente al posto giusto rispetto all'elenco fornito
 
-    // ordino tutti gli studenti
-    for (i = 0; i < num_studenti - 1; i++)
+studente *riordina_elenco(studente *elenco, int num_studenti)
+{
+    contatori i, j;
+    studente temp;
+
+    for (i = 0; i < num_studenti - 2; i++)
     {
-        if (strcmp(elenco[i].cognome, elenco[i + 1].cognome) == 0)
+        if (strcmp(elenco[num_studenti - 1].cognome, elenco[i].cognome) != 0)
         {
-            // scorro ogni lettera del nome finchè non ne trovo una diversa
-            ordina_parole(i, elenco, num_studenti, elenco[i].nome, elenco[i - 1].nome, elenco[i + 1].nome);
+            if (strcmp(elenco[num_studenti - 1].cognome, elenco[i].cognome) < 0)
+            {
+                temp = elenco[num_studenti - 1];
+                for (j = num_studenti - 1; j > i; j--)
+                {
+                    elenco[j] = elenco[j - 1];
+                }
+                elenco[i] = temp;
+            }
         }
         else
         {
-            // scorro ogni lettera del cognome finche quello dopo non ha almeno una lettera diversa
-            ordina_parole(i, elenco, num_studenti, elenco[i].cognome, elenco[i - 1].cognome, elenco[i + 1].cognome);
+            if (strcmp(elenco[num_studenti - 1].nome, elenco[i].nome) < 0)
+            {
+                temp = elenco[num_studenti - 1];
+                for (j = num_studenti - 1; j > i; j--)
+                {
+                    elenco[j] = elenco[j - 1];
+                }
+                elenco[i] = temp;
+            }
         }
     }
+    printf("Utente inserito secondo l'ordinamento alfabetico\n");
 
-    printf("Ordinamento effettuato con successo");
+    return elenco;
 }

@@ -32,7 +32,7 @@ typedef int contatori;
 typedef int controllo;
 typedef char gestione_file;
 
-void riordina_elenco(studente[], int);
+studente *riordina_elenco(studente[], int);
 
 char *ottieni_file_classe(char[]);
 
@@ -40,5 +40,5 @@ studente *struttura_elenco(contatori *, gestione_file[]);
 
 void stampa_elenco(studente *, int);
 
-void aggiunta_studente(studente[], int, char[], char[]);
+studente *aggiunta_studente(studente[], int, char[], char[]);
 void riscrivi_file_classe(studente[], char[], int);

@@ -16,9 +16,11 @@ int main()
     elenco = struttura_elenco(&num_studenti, file_classe);
 
     num_studenti++;
-    aggiunta_studente(elenco, num_studenti, file_classe, classe);
+    elenco = aggiunta_studente(elenco, num_studenti, file_classe, classe);
 
-    riordina_elenco(elenco, num_studenti);
+    elenco = riordina_elenco(elenco, num_studenti);
+
+    stampa_elenco(elenco, num_studenti);
 
     riscrivi_file_classe(elenco, file_classe, num_studenti);
 
