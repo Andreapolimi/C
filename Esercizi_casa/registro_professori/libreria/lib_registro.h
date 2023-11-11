@@ -32,7 +32,7 @@ typedef int contatori;
 typedef int controllo;
 typedef char gestione_file;
 
-studente *riordina_elenco(studente[], int);
+void riordina_elenco(studente[], int);
 
 char *ottieni_file_classe(char[]);
 

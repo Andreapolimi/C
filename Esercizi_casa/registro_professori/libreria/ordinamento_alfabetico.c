@@ -7,12 +7,13 @@
 // quindi non serve effettuare nuovamente il controllo
 // Ogni qual volta viene chiamata tutti gli elementi dell'elenco sono già ordinati, perciò basta inserire l'utente al posto giusto rispetto all'elenco fornito
 
-studente *riordina_elenco(studente *elenco, int num_studenti)
+void riordina_elenco(studente *elenco, int num_studenti)
 {
     contatori i, j;
     studente temp;
+    bool esci = False;
 
-    for (i = 0; i < num_studenti - 2; i++)
+    for (i = 0; i < num_studenti - 1 && esci == False; i++)
     {
         if (strcmp(elenco[num_studenti - 1].cognome, elenco[i].cognome) != 0)
         {
@@ -24,6 +25,7 @@ studente *riordina_elenco(studente *elenco, int num_studenti)
                     elenco[j] = elenco[j - 1];
                 }
                 elenco[i] = temp;
+                esci = True;
             }
         }
         else
@@ -36,10 +38,9 @@ studente *riordina_elenco(studente *elenco, int num_studenti)
                     elenco[j] = elenco[j - 1];
                 }
                 elenco[i] = temp;
+                esci = True;
             }
         }
     }
     printf("Utente inserito secondo l'ordinamento alfabetico\n");
-
-    return elenco;
 }

@@ -18,7 +18,7 @@ int main()
     num_studenti++;
     elenco = aggiunta_studente(elenco, num_studenti, file_classe, classe);
 
-    elenco = riordina_elenco(elenco, num_studenti);
+    riordina_elenco(elenco, num_studenti);
 
     stampa_elenco(elenco, num_studenti);
 
