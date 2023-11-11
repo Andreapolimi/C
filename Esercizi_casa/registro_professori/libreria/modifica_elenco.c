@@ -29,8 +29,13 @@ studente *aggiunta_studente(studente *elenco, int num_studenti, char file_classe
           &elenco[i].data_nascita.anno);
 
     elenco[i].percorso_file = (char *)calloc(DIM_MAX, DIM_MAX * sizeof(char));
-    printf("Inserisci il percorso che avrà il nuovo file relativo allo studente: ");
-    scanf("%s", elenco[i].percorso_file);
+    strcat(elenco[i].percorso_file, "file_classi/");
+    strcat(elenco[i].percorso_file, classe);
+    strcat(elenco[i].percorso_file, "/file_studenti/");
+    strcat(elenco[i].percorso_file, elenco[i].cognome);
+    strcat(elenco[i].percorso_file, "_");
+    strcat(elenco[i].percorso_file, elenco[i].nome);
+    strcat(elenco[i].percorso_file, ".txt");
     elenco[i].percorso_file = (char *)realloc(elenco[i].percorso_file, (strlen(elenco[i].percorso_file) + 1) * sizeof(char));
 
     nuovo_studente = fopen(elenco[i].percorso_file, file_mode);
