@@ -47,20 +47,39 @@ studente *aggiunta_studente(studente *elenco, int num_studenti, char file_classe
     return elenco;
 }
 
-void riscrivi_file_classe(studente elenco[], char file_classe[], int num_studenti)
+void aggiungi_voti(studente *studente)
 {
-    gestione_file file_mode[] = "w";
-    FILE *modifica_classe;
-    contatori i;
+    bool esci = False;
+    contatori i = 0, j = studente->conta_valutazioni;
+    char risposta[DIM_MAX];
 
-    modifica_classe = fopen(file_classe, file_mode);
-    for (i = 0; i < num_studenti; i++)
+    while (esci == False)
     {
-        fprintf(modifica_classe, "%s %s %d:%d:%d %s\n", elenco[i].cognome, elenco[i].nome,
-                elenco[i].data_nascita.giorno, elenco[i].data_nascita.mese, elenco[i].data_nascita.anno, elenco[i].percorso_file);
+        studente->conta_valutazioni++;
+        studente->voti = (valutazioni *)realloc(studente->voti, studente->conta_valutazioni * sizeof(valutazioni));
+
+        printf("Inserire il %d° voto: ", i + 1);
+        scanf("%d", &studente->voti[j + i].voto);
+
+        studente->voti[j + i].materia = (char *)calloc(DIM_MAX, DIM_MAX * sizeof(char));
+        printf("Specifica la materia: ");
+        scanf("%s", studente->voti->materia);
+        studente->voti[j + 1].materia = (char *)realloc(studente->voti[j + i].materia, (strlen(studente->voti[j + i].materia) + 1) * sizeof(char));
+
+        printf("Specifica la data di valutazione nel formato DD:MM:YYYY: ");
+        scanf("%d:%d:%d", &studente->voti[j + 1].data_valutazione.giorno, &studente->voti[j + i].data_valutazione.giorno, &studente->voti[j + i].data_valutazione.giorno);
+
+        do
+        {
+            printf("Vuoi inserire un'altra valutazione? (si/no)\n");
+            scanf("%s", risposta);
+            if (strcmp(risposta, "no") == 0)
+                esci = True;
+            else
+            {
+                if (strcmp(risposta, "si") != 0)
+                    printf("Risposta non valida, riprova\n");
+            }
+        } while (strcmp(risposta, "si") != 0 || strcmp(risposta, "no") != 0);
     }
-
-    fclose(modifica_classe);
-
-    printf("File classe riscritto con successo");
 }

@@ -1,0 +1,21 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/andreavaccai/Coding/C/Esercizi_casa/registro_professori/registro_prof'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100002554, symSize: 0x90 }
+  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100002554, symSize: 0x90 }
+  - { offsetInCU: 0x26, offset: 0x1D0, size: 0x8, addend: 0x0, symName: _struttura_valutazioni, symObjAddr: 0x0, symBinAddr: 0x1000025E4, symSize: 0x21C }
+  - { offsetInCU: 0x124, offset: 0x2CE, size: 0x8, addend: 0x0, symName: _struttura_valutazioni, symObjAddr: 0x0, symBinAddr: 0x1000025E4, symSize: 0x21C }
+  - { offsetInCU: 0x184, offset: 0x32E, size: 0x8, addend: 0x0, symName: _struttura_elenco, symObjAddr: 0x21C, symBinAddr: 0x100002800, symSize: 0x404 }
+  - { offsetInCU: 0x26, offset: 0x5D4, size: 0x8, addend: 0x0, symName: _ottieni_file_classe, symObjAddr: 0x0, symBinAddr: 0x100002C04, symSize: 0x1E4 }
+  - { offsetInCU: 0x67, offset: 0x615, size: 0x8, addend: 0x0, symName: _ottieni_file_classe, symObjAddr: 0x0, symBinAddr: 0x100002C04, symSize: 0x1E4 }
+  - { offsetInCU: 0x26, offset: 0x8D4, size: 0x8, addend: 0x0, symName: _stampa_elenco, symObjAddr: 0x0, symBinAddr: 0x100002DE8, symSize: 0x234 }
+  - { offsetInCU: 0x41, offset: 0x8EF, size: 0x8, addend: 0x0, symName: _stampa_elenco, symObjAddr: 0x0, symBinAddr: 0x100002DE8, symSize: 0x234 }
+  - { offsetInCU: 0x26, offset: 0xA50, size: 0x8, addend: 0x0, symName: _aggiunta_studente, symObjAddr: 0x0, symBinAddr: 0x10000301C, symSize: 0x41C }
+  - { offsetInCU: 0x143, offset: 0xB6D, size: 0x8, addend: 0x0, symName: _aggiunta_studente, symObjAddr: 0x0, symBinAddr: 0x10000301C, symSize: 0x41C }
+  - { offsetInCU: 0x1BF, offset: 0xBE9, size: 0x8, addend: 0x0, symName: _aggiungi_voti, symObjAddr: 0x41C, symBinAddr: 0x100003438, symSize: 0x334 }
+  - { offsetInCU: 0x26, offset: 0xE97, size: 0x8, addend: 0x0, symName: _riordina_elenco, symObjAddr: 0x0, symBinAddr: 0x10000376C, symSize: 0x2D0 }
+  - { offsetInCU: 0x61, offset: 0xED2, size: 0x8, addend: 0x0, symName: _riordina_elenco, symObjAddr: 0x0, symBinAddr: 0x10000376C, symSize: 0x2D0 }
+  - { offsetInCU: 0x26, offset: 0x105A, size: 0x8, addend: 0x0, symName: _riscrivi_file_classe, symObjAddr: 0x0, symBinAddr: 0x100003A3C, symSize: 0x16C }
+  - { offsetInCU: 0x41, offset: 0x1075, size: 0x8, addend: 0x0, symName: _riscrivi_file_classe, symObjAddr: 0x0, symBinAddr: 0x100003A3C, symSize: 0x16C }
+...

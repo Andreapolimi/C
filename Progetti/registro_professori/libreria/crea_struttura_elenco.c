@@ -32,7 +32,7 @@ int struttura_valutazioni(valutazioni **voti, char *nome_file)
     return j;
 }
 
-studente *struttura_elenco(contatori *i, gestione_file nome_file[])
+studente *struttura_elenco_classe(contatori *i, gestione_file nome_file[])
 {
     studente *elenco;
     gestione_file file_mode[] = "r";

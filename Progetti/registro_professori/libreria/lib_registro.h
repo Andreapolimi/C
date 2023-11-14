@@ -28,17 +28,25 @@ typedef struct studente
     char *percorso_file;
 } studente;
 
+typedef struct classe
+{
+    struct classe 
+} classe_t;
+
 typedef int contatori;
 typedef int controllo;
 typedef char gestione_file;
 
 void riordina_elenco(studente[], int);
+// void ordina_voti(studente,int);
 
 char *ottieni_file_classe(char[]);
 
-studente *struttura_elenco(contatori *, gestione_file[]);
+studente *struttura_elenco_classe(contatori *, gestione_file[]);
 
 void stampa_elenco(studente *, int);
 
 studente *aggiunta_studente(studente[], int, char[], char[]);
+void aggiungi_voti(studente *);
 void riscrivi_file_classe(studente[], char[], int);
+

@@ -14,7 +14,8 @@
                 "libreria/ottieni_file_classe.c",
                 "libreria/stampa_info.c",
                 "libreria/modifica_elenco.c",
-                "libreria/ordinamento_alfabetico.c"
+                "libreria/ordinamento_alfabetico.c",
+                "libreria/riscrittura_file.c"
             ],
             "options": {
                 "cwd": "${fileDirname}"

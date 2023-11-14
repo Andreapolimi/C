@@ -1,3 +1,0 @@
-2B file_classi/2B/file_classe_2b.txt
-3C file_classi/3C/file_classe_3c.txt
-4C file_classi/4C/file_classe4c.txt
