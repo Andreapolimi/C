@@ -136,6 +136,27 @@ void elimina_nodo(nodo_t *radice)
     }
 }
 
+void stampa_albero(nodo_t *posizione, int i)
+{
+    printf("\n");
+    while (posizione != NULL)
+    {
+        for (int j = 0; j < i; j++)
+            printf("\t");
+
+        if (posizione->primo_figlio != NULL)
+        {
+            printf("%d", posizione->valore);
+            printf("\n");
+            stampa_albero(posizione->primo_figlio, i + 1);
+        }
+        else
+            printf("%d\t", posizione->valore);
+        posizione = posizione->el_successivo;
+    }
+    printf("\n");
+}
+
 int main()
 {
     nodo_t *radice;
@@ -154,7 +175,7 @@ int main()
         errore = True;
         while (errore == True)
         {
-            printf("\nCosa vuoi fare?\n1 AGGIUNGI NODO\n2 MODIFICA NODO\n3 ELMINA NODO\nScelta: ");
+            printf("\nCosa vuoi fare?\n1 AGGIUNGI NODO\n2 MODIFICA NODO\n3 ELMINA NODO\n4 STAMPA ALBERO\nScelta: ");
             scanf("%d", &azione);
             if (azione == 1)
             {
@@ -170,6 +191,11 @@ int main()
             {
                 errore = False;
                 elimina_nodo(radice);
+            }
+            else if (azione == 4)
+            {
+                errore = False;
+                stampa_albero(radice, 0);
             }
             else
                 printf("Scelta non valida, riprova\n");
