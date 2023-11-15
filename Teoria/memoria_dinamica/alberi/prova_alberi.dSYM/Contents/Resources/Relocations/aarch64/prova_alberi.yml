@@ -1,0 +1,11 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/andreavaccai/Coding/C/Teoria/memoria_dinamica/alberi/prova_alberi'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _ricerca_nodo, symObjAddr: 0x0, symBinAddr: 0x10000375C, symSize: 0x208 }
+  - { offsetInCU: 0xB2, offset: 0xB2, size: 0x8, addend: 0x0, symName: _ricerca_nodo, symObjAddr: 0x0, symBinAddr: 0x10000375C, symSize: 0x208 }
+  - { offsetInCU: 0x13C, offset: 0x13C, size: 0x8, addend: 0x0, symName: _aggiungi_nodo, symObjAddr: 0x208, symBinAddr: 0x100003964, symSize: 0xC8 }
+  - { offsetInCU: 0x17C, offset: 0x17C, size: 0x8, addend: 0x0, symName: _modifica_nodo, symObjAddr: 0x2D0, symBinAddr: 0x100003A2C, symSize: 0x78 }
+  - { offsetInCU: 0x1AE, offset: 0x1AE, size: 0x8, addend: 0x0, symName: _elimina_nodo, symObjAddr: 0x348, symBinAddr: 0x100003AA4, symSize: 0x12C }
+  - { offsetInCU: 0x20A, offset: 0x20A, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x474, symBinAddr: 0x100003BD0, symSize: 0x1D4 }
+...
