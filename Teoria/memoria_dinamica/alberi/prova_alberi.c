@@ -136,26 +136,9 @@ void elimina_nodo(nodo_t *radice)
     }
 }
 
-void stampa_albero(nodo_t *posizione, int i)
-{
-    printf("\n");
-    while (posizione != NULL)
-    {
-        for (int j = 0; j < i; j++)
-            printf("\t");
+void stampa_albero(nodo_t *posizione, int i);
 
-        if (posizione->primo_figlio != NULL)
-        {
-            printf("%d", posizione->valore);
-            printf("\n");
-            stampa_albero(posizione->primo_figlio, i + 1);
-        }
-        else
-            printf("%d\t", posizione->valore);
-        posizione = posizione->el_successivo;
-    }
-    printf("\n");
-}
+void ordina_albero(nodo_t *posizione);
 
 int main()
 {
