@@ -1,0 +1,11 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/andreavaccai/Coding/C/Teoria/memoria_dinamica/alberi/gestione_alberi'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _ricerca_nodo, symObjAddr: 0x0, symBinAddr: 0x1000036D4, symSize: 0x208 }
+  - { offsetInCU: 0xB2, offset: 0xB2, size: 0x8, addend: 0x0, symName: _ricerca_nodo, symObjAddr: 0x0, symBinAddr: 0x1000036D4, symSize: 0x208 }
+  - { offsetInCU: 0x13C, offset: 0x13C, size: 0x8, addend: 0x0, symName: _aggiungi_nodo, symObjAddr: 0x208, symBinAddr: 0x1000038DC, symSize: 0xC8 }
+  - { offsetInCU: 0x18A, offset: 0x18A, size: 0x8, addend: 0x0, symName: _modifica_nodo, symObjAddr: 0x2D0, symBinAddr: 0x1000039A4, symSize: 0x78 }
+  - { offsetInCU: 0x1BC, offset: 0x1BC, size: 0x8, addend: 0x0, symName: _elimina_nodo, symObjAddr: 0x348, symBinAddr: 0x100003A1C, symSize: 0x12C }
+  - { offsetInCU: 0x218, offset: 0x218, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x474, symBinAddr: 0x100003B48, symSize: 0x200 }
+...

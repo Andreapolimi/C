@@ -178,7 +178,7 @@ int main()
             else if (azione == 4)
             {
                 errore = False;
-                stampa_albero(radice, 0);
+                // stampa_albero(radice, 0);
             }
             else
                 printf("Scelta non valida, riprova\n");
