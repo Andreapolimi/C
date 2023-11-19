@@ -65,5 +65,7 @@ void aggiungi_nodo(nodo_t *radice)
         }
     }
     nodo_t *last_el = trova_max(temp3);
-    quicksort_lista(temp3, last_el);
+    nodo_t *ptr_el1;
+    ptr_el1->el_successivo = temp3;
+    quicksort_lista(ptr_el1, last_el);
 }
