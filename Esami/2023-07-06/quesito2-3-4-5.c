@@ -132,6 +132,8 @@ int main(int argc, char *argv[])
     }
 
     testa = Dominante(testa, n, m, mat);
+    free(mat);
+
     StampaLista(testa);
 
     printf("\n");
