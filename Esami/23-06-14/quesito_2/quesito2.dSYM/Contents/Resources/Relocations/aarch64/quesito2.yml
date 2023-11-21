@@ -1,0 +1,10 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/andreavaccai/Coding/C/Esami/23-06-14/quesito2'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _ModificaLista, symObjAddr: 0x0, symBinAddr: 0x100003C44, symSize: 0xB8 }
+  - { offsetInCU: 0x8A, offset: 0x8A, size: 0x8, addend: 0x0, symName: _ModificaLista, symObjAddr: 0x0, symBinAddr: 0x100003C44, symSize: 0xB8 }
+  - { offsetInCU: 0xD8, offset: 0xD8, size: 0x8, addend: 0x0, symName: _ComprimiLista, symObjAddr: 0xB8, symBinAddr: 0x100003CFC, symSize: 0x10C }
+  - { offsetInCU: 0x118, offset: 0x118, size: 0x8, addend: 0x0, symName: _StampaLista, symObjAddr: 0x1C4, symBinAddr: 0x100003E08, symSize: 0x80 }
+  - { offsetInCU: 0x13C, offset: 0x13C, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x244, symBinAddr: 0x100003E88, symSize: 0xA4 }
+...
