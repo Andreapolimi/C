@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/andreavaccai/Coding/C/Esercizi/re_regina",
-      "program": "/Users/andreavaccai/Coding/C/Esami/build/Debug/outDebug"
+      "cwd": "${fileDirname}",
+      "program": "${fileDirname}/${fileBasenameNoExtension}"
     }
   ]
 }
