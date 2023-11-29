@@ -15,7 +15,7 @@ typedef struct data
 
 typedef struct tree
 {
-    char file_complessivo[MAX_RIGA], file_specifico[MAX_RIGA];
+    char cartella[MAX_RIGA], file_complessivo[MAX_RIGA], file_specifico[MAX_RIGA];
     int byte;
     char identificativo[MAX_RIGA];
     struct tree *padre;
@@ -72,13 +72,5 @@ void rimuovi_nodo();
 void modifica_nodo();
 void stampa_nodo();
 
-void acquisisci_file(); // ricerca binaria
-void scrivi_file();     // trova modo per scrivere in mezzo
-
-int strlen(char *stringa, int i, int len)
-{
-    if (stringa[i] == '\0')
-        return len;
-    else
-        strlen(stringa, i + 1, len + 1);
-}
+node_t *acquisisci_file(node_t *); // ricerca binaria
+void scrivi_file();                // trova modo per scrivere in mezzo
