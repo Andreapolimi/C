@@ -38,7 +38,7 @@ int main()
     UnisciInOrdine(array3, array1, array2, dim1, dim2);
 
     for (int i = 0; i < 9; i++)
-        printf("%d", array3[i]);
+        printf("%d ", array3[i]);
 
     return 0;
 }
