@@ -1,32 +1,93 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct tree
-{
-    int value;
-    struct tree *left_child;
-    struct tree *right_child;
-} node_t;
-
 typedef enum
 {
     False,
     True
 } bool_t;
 
-void printfInOrder(node_t *radice)
+typedef struct tree
+{
+    int value;
+    struct tree *left_child;
+    struct tree *right_child;
+} nodeTree_t;
+
+typedef struct queue
+{
+    nodeTree_t *pointer;
+    struct queue *next;
+} nodeQueue_t;
+
+nodeQueue_t *InsertTale(nodeTree_t *element)
+{
+    nodeQueue_t *new_tale;
+    new_tale = (nodeQueue_t *)malloc(sizeof(nodeQueue_t));
+    new_tale->pointer = element;
+    new_tale->next = NULL;
+    return new_tale;
+}
+
+void printfLevel(nodeTree_t *radice)
+{
+    nodeQueue_t *head, *tale = NULL, *temp;
+
+    if (radice != NULL)
+    {
+        head = (nodeQueue_t *)malloc(sizeof(nodeQueue_t));
+        head->pointer = radice;
+        head->next = NULL;
+
+        while (head != NULL)
+        {
+            printf("%d\t", head->pointer->value);
+
+            if (head->pointer->left_child != NULL)
+            {
+                if (tale == NULL)
+                    tale = InsertTale(head->pointer->left_child);
+                else
+                {
+                    tale->next = InsertTale(head->pointer->left_child);
+                    tale = tale->next;
+                }
+                if (head->next == NULL)
+                    head->next = tale;
+            }
+            if (head->pointer->right_child != NULL)
+            {
+                if (tale == NULL)
+                    tale = InsertTale(head->pointer->right_child);
+                else
+                {
+                    tale->next = InsertTale(head->pointer->right_child);
+                    tale = tale->next;
+                }
+                if (head->next == NULL)
+                    head->next = tale;
+            }
+
+            temp = head;
+            head = head->next;
+            free(temp);
+        }
+    }
+}
+
+void printfInOrder(nodeTree_t *radice)
 {
     if (radice != NULL)
     {
         printfInOrder(radice->left_child);
-        printf("%d ", radice);
+        printf("%d\t", radice->value);
         printfInOrder(radice->right_child);
     }
 }
 
-node_t *LeftRotation(node_t *radice)
+nodeTree_t *LeftRotation(nodeTree_t *radice)
 {
-    node_t *x, *y, *z, *w;
+    nodeTree_t *x, *y, *z, *w;
 
     y = radice;
     x = radice->left_child;
@@ -41,9 +102,9 @@ node_t *LeftRotation(node_t *radice)
     return radice;
 }
 
-node_t *RightRotation(node_t *radice)
+nodeTree_t *RightRotation(nodeTree_t *radice)
 {
-    node_t *x, *y, *z, *w;
+    nodeTree_t *x, *y, *z, *w;
 
     y = radice;
     x = radice->right_child;
@@ -58,7 +119,7 @@ node_t *RightRotation(node_t *radice)
     return radice;
 }
 
-int TreeHeight(node_t *radice)
+int TreeHeight(nodeTree_t *radice)
 {
     int altezza, altezza_sx, altezza_dx;
 
@@ -69,29 +130,48 @@ int TreeHeight(node_t *radice)
         altezza_sx = TreeHeight(radice->left_child);
         altezza_dx = TreeHeight(radice->right_child);
         altezza = (altezza_sx > altezza_dx) ? altezza_sx : altezza_dx;
+        altezza++;
     }
     return altezza;
 }
 
-node_t *IfBalanced(node_t *radice)
+nodeTree_t *IfBalanced(nodeTree_t *radice)
 {
+    if (radice->left_child != NULL)
+        radice->left_child = IfBalanced(radice->left_child);
+    if (radice->right_child != NULL)
+        radice->right_child = IfBalanced(radice->right_child);
+
     int bilance = TreeHeight(radice->left_child) - TreeHeight(radice->right_child);
     if (bilance > 1)
-        radice = LeftRotation(radice);
+    {
+        if (TreeHeight(radice->left_child->left_child) >= TreeHeight(radice->left_child->right_child))
+            radice = LeftRotation(radice);
+        else
+        {
+            radice->left_child = RightRotation(radice->left_child);
+            radice = LeftRotation(radice);
+        }
+    }
     else if (bilance < -1)
-        radice = RightRotation(radice);
-
-    radice = IfBalanced(radice->left_child);
-    radice = IfBalanced(radice->right_child);
+    {
+        if (TreeHeight(radice->right_child->right_child) >= TreeHeight(radice->right_child->left_child))
+            radice = RightRotation(radice);
+        else
+        {
+            radice->right_child = LeftRotation(radice->right_child);
+            radice = RightRotation(radice);
+        }
+    }
 
     return radice;
 }
 
-node_t *NewNode(int value)
+nodeTree_t *NewNode(int value)
 {
-    node_t *nuovo_nodo;
+    nodeTree_t *nuovo_nodo;
 
-    nuovo_nodo = (node_t *)malloc(sizeof(node_t));
+    nuovo_nodo = (nodeTree_t *)malloc(sizeof(nodeTree_t));
     nuovo_nodo->left_child = NULL;
     nuovo_nodo->right_child = NULL;
     nuovo_nodo->value = value;
@@ -99,41 +179,40 @@ node_t *NewNode(int value)
     return nuovo_nodo;
 }
 
-void InsertNode(node_t *radice, int value)
+nodeTree_t *InsertTree(nodeTree_t *radice, int value)
 {
     if (radice == NULL)
         radice = NewNode(value);
-    else if (radice->value <= value)
-        InsertNode(radice->left_child, value);
+    else if (radice->value >= value)
+        radice->left_child = InsertTree(radice->left_child, value);
     else
-        InsertNode(radice->right_child, value);
+        radice->right_child = InsertTree(radice->right_child, value);
+
+    return radice;
 }
 
 int main()
 {
-    node_t *radice = NULL;
+    nodeTree_t *radice = NULL;
     bool_t errore;
-    int risposta, value;
+    int risposta, value = 0;
 
-    errore = True;
-    while (errore == True)
+    while (value != -1)
     {
-        printf("Vuoi inserire un nuovo nodo?\n1 SI\n2 NO\nScelta: ");
-        scanf("%d", &risposta);
-
-        if (risposta == 1)
+        printf("Inserire il valore da attribuire al nuovo nodo (inserire '-1' se si vuole terminare l'operazione): ");
+        scanf("%d", &value);
+        if (value != -1)
         {
-            errore = False;
-            printf("Inserire il valore da attribuire al nodo: ");
-            scanf("%d", &value);
-            InsertNode(radice, value);
-            printf("Nodo inserito correttamente\n");
+            radice = InsertTree(radice, value);
             radice = IfBalanced(radice);
-            printf("Albero bilanciato correttamente\n");
         }
-        else if (risposta != 2)
-            printf("Scelta non valida, riprova\n");
-        else
-            errore = False;
     }
+
+    printf("\n\nStampa in ordine:\n");
+    printfInOrder(radice);
+
+    printf("\n\nStampa a livelli:\n");
+    printfLevel(radice);
+
+    return 0;
 }
