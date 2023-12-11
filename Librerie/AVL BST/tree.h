@@ -34,3 +34,9 @@ tree_t *InOrderPredecessor(tree_t *, char *);
 
 // DELETE
 void Delete(tree_t **, char *);
+
+// CHOOSE
+tree_t *Inserimento(tree_t *);
+tree_t *Modifica(tree_t *);
+tree_t *Rimozione(tree_t *);
+void Stampa(tree_t *);

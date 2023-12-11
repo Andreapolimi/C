@@ -1,0 +1,34 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/andreavaccai/Coding/C/Librerie/AVL BST/avl_tree'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100002808, symSize: 0x104 }
+  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100002808, symSize: 0x104 }
+  - { offsetInCU: 0x26, offset: 0x107, size: 0x8, addend: 0x0, symName: _NewNode, symObjAddr: 0x0, symBinAddr: 0x10000290C, symSize: 0x4C }
+  - { offsetInCU: 0x8F, offset: 0x170, size: 0x8, addend: 0x0, symName: _NewNode, symObjAddr: 0x0, symBinAddr: 0x10000290C, symSize: 0x4C }
+  - { offsetInCU: 0xC5, offset: 0x1A6, size: 0x8, addend: 0x0, symName: _InsertTree, symObjAddr: 0x4C, symBinAddr: 0x100002958, symSize: 0xA0 }
+  - { offsetInCU: 0x26, offset: 0x208, size: 0x8, addend: 0x0, symName: _LeftRotation, symObjAddr: 0x0, symBinAddr: 0x1000029F8, symSize: 0x6C }
+  - { offsetInCU: 0x33, offset: 0x215, size: 0x8, addend: 0x0, symName: _LeftRotation, symObjAddr: 0x0, symBinAddr: 0x1000029F8, symSize: 0x6C }
+  - { offsetInCU: 0x93, offset: 0x275, size: 0x8, addend: 0x0, symName: _RightRotation, symObjAddr: 0x6C, symBinAddr: 0x100002A64, symSize: 0x6C }
+  - { offsetInCU: 0xF3, offset: 0x2D5, size: 0x8, addend: 0x0, symName: _TreeHeight, symObjAddr: 0xD8, symBinAddr: 0x100002AD0, symSize: 0xB4 }
+  - { offsetInCU: 0x145, offset: 0x327, size: 0x8, addend: 0x0, symName: _IfBalanced, symObjAddr: 0x18C, symBinAddr: 0x100002B84, symSize: 0x204 }
+  - { offsetInCU: 0x26, offset: 0x3E7, size: 0x8, addend: 0x0, symName: _InsertTale, symObjAddr: 0x0, symBinAddr: 0x100002D88, symSize: 0x64 }
+  - { offsetInCU: 0xC5, offset: 0x486, size: 0x8, addend: 0x0, symName: _InsertTale, symObjAddr: 0x0, symBinAddr: 0x100002D88, symSize: 0x64 }
+  - { offsetInCU: 0x105, offset: 0x4C6, size: 0x8, addend: 0x0, symName: _RemoveHead, symObjAddr: 0x64, symBinAddr: 0x100002DEC, symSize: 0x44 }
+  - { offsetInCU: 0x137, offset: 0x4F8, size: 0x8, addend: 0x0, symName: _printfLevel, symObjAddr: 0xA8, symBinAddr: 0x100002E30, symSize: 0x118 }
+  - { offsetInCU: 0x177, offset: 0x538, size: 0x8, addend: 0x0, symName: _printfInOrder, symObjAddr: 0x1C0, symBinAddr: 0x100002F48, symSize: 0x64 }
+  - { offsetInCU: 0x26, offset: 0x587, size: 0x8, addend: 0x0, symName: _Search, symObjAddr: 0x0, symBinAddr: 0x100002FAC, symSize: 0xD0 }
+  - { offsetInCU: 0x41, offset: 0x5A2, size: 0x8, addend: 0x0, symName: _Search, symObjAddr: 0x0, symBinAddr: 0x100002FAC, symSize: 0xD0 }
+  - { offsetInCU: 0x77, offset: 0x5D8, size: 0x8, addend: 0x0, symName: _SearchParent, symObjAddr: 0xD0, symBinAddr: 0x10000307C, symSize: 0xE4 }
+  - { offsetInCU: 0xAD, offset: 0x60E, size: 0x8, addend: 0x0, symName: _FindMin, symObjAddr: 0x1B4, symBinAddr: 0x100003160, symSize: 0x60 }
+  - { offsetInCU: 0xE3, offset: 0x644, size: 0x8, addend: 0x0, symName: _FindMax, symObjAddr: 0x214, symBinAddr: 0x1000031C0, symSize: 0x60 }
+  - { offsetInCU: 0x119, offset: 0x67A, size: 0x8, addend: 0x0, symName: _InOrderSuccessor, symObjAddr: 0x274, symBinAddr: 0x100003220, symSize: 0x100 }
+  - { offsetInCU: 0x14F, offset: 0x6B0, size: 0x8, addend: 0x0, symName: _InOrderPredecessor, symObjAddr: 0x374, symBinAddr: 0x100003320, symSize: 0x100 }
+  - { offsetInCU: 0x26, offset: 0x75F, size: 0x8, addend: 0x0, symName: _Delete, symObjAddr: 0x0, symBinAddr: 0x100003420, symSize: 0x22C }
+  - { offsetInCU: 0x33, offset: 0x76C, size: 0x8, addend: 0x0, symName: _Delete, symObjAddr: 0x0, symBinAddr: 0x100003420, symSize: 0x22C }
+  - { offsetInCU: 0x26, offset: 0x870, size: 0x8, addend: 0x0, symName: _Inserimento, symObjAddr: 0x0, symBinAddr: 0x10000364C, symSize: 0x100 }
+  - { offsetInCU: 0x41, offset: 0x88B, size: 0x8, addend: 0x0, symName: _Inserimento, symObjAddr: 0x0, symBinAddr: 0x10000364C, symSize: 0x100 }
+  - { offsetInCU: 0x77, offset: 0x8C1, size: 0x8, addend: 0x0, symName: _Modifica, symObjAddr: 0x100, symBinAddr: 0x10000374C, symSize: 0x2A0 }
+  - { offsetInCU: 0xE8, offset: 0x932, size: 0x8, addend: 0x0, symName: _Rimozione, symObjAddr: 0x3A0, symBinAddr: 0x1000039EC, symSize: 0xD0 }
+  - { offsetInCU: 0x11E, offset: 0x968, size: 0x8, addend: 0x0, symName: _Stampa, symObjAddr: 0x470, symBinAddr: 0x100003ABC, symSize: 0x150 }
+...

@@ -9,7 +9,13 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "insert.c",
+                "bilance.c",
+                "print.c",
+                "search.c",
+                "delete.c",
+                "scelte.c"
             ],
             "options": {
                 "cwd": "${fileDirname}"
