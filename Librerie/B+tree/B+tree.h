@@ -4,6 +4,7 @@
 typedef struct data
 {
     int key, value[50];
+    struct data *next;
 } data_t;
 
 typedef struct Bplus
@@ -19,4 +20,12 @@ typedef struct Bplus
     } pointer;
 } Bplus_node_t;
 
-void InsertKey(Bplus_node_t **, int);
+typedef struct queue
+{
+    Bplus_node_t *pointer;
+    struct queue *next;
+} queue_t;
+
+void InsertKey(Bplus_node_t **, data_t *, int, Bplus_node_t *, Bplus_node_t *);
+
+void printfLevel(Bplus_node_t *);
