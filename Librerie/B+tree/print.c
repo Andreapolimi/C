@@ -43,7 +43,6 @@ void printfLevel(Bplus_node_t *radice)
             if (!(head->pointer->isleaf))
                 for (i = 0; i < head->pointer->cont_keys + 1; i++)
                     InsertTale(&tale, head->pointer->pointer.low_level[i]);
-
             RemoveHead(&head);
         }
     }

@@ -34,7 +34,7 @@ Bplus_node_t *SearchPointer(Bplus_node_t *root, Bplus_node_t *node)
 
     if (!(root->isleaf))
     {
-        for (i = 0; i <= root->cont_keys && trovato == false; i++)
+        for (i = 0; i < root->cont_keys && trovato == false; i++)
         {
             if (root->keys[i] > node->keys[0])
             {
@@ -44,15 +44,22 @@ Bplus_node_t *SearchPointer(Bplus_node_t *root, Bplus_node_t *node)
                     trovato = true;
                 }
                 else
-                    node = SearchPointer(root->pointer.low_level[i], node);
+                {
+                    parent = SearchPointer(root->pointer.low_level[i], node);
+                    trovato = true;
+                }
             }
         }
         if (!trovato)
+        {
+            if (root->pointer.low_level[i] == node)
+                parent = root;
+        }
+        else
             node = SearchPointer(root->pointer.low_level[i], node);
     }
     else
         parent = NULL;
-
     return parent;
 }
 
@@ -83,24 +90,48 @@ int SearchNextKeyIndex(Bplus_node_t *node, int new_key)
             trovato = true;
             next_key_index = i;
         }
-    if (!trovato)
+    if (!trovato && node->cont_keys < MAX_KEYS)
         next_key_index = node->cont_keys;
+    else if (!trovato)
+        next_key_index = -1;
 
     return next_key_index;
 }
+
+void SimpleAddKey(Bplus_node_t *node, Bplus_node_t *pointer_new_node, int next_key_index, data_t *new_data, int new_key)
+{
+    int i;
+
+    node->cont_keys++;
+
+    for (i = node->cont_keys - 1; i > next_key_index; i--)
+    {
+        node->keys[i] = node->keys[i - 1];
+        if (node->isleaf)
+            node->pointer.data[i] = node->pointer.data[i - 1];
+        else
+            node->pointer.low_level[i + 1] = node->pointer.low_level[i];
+    }
+    node->keys[i] = new_key;
+    if (node->isleaf)
+        node->pointer.data[i] = new_data;
+    else
+        node->pointer.low_level[i + 1] = pointer_new_node;
+}
+
+// bool Redistribution();
 
 void MoveToRight(Bplus_node_t *node, Bplus_node_t *new_node, Bplus_node_t *pointer_new_node, int next_key_index, data_t *new_data, int new_key)
 {
     int i, j;
     bool inserita = false;
 
-    for (i = MAX_KEYS - 1, j = new_node->cont_keys; j >= 0; j--)
+    for (i = MAX_KEYS - 1, j = new_node->cont_keys - 1; j >= 0; j--)
     {
-        if (node->keys[i] > new_key && inserita == false)
+        if (node->keys[i] > new_key || inserita == true)
         {
             new_node->keys[j] = node->keys[i];
             node->keys[i] = 0;
-            i--;
             if (node->isleaf)
             {
                 new_node->pointer.data[j] = node->pointer.data[i];
@@ -111,6 +142,7 @@ void MoveToRight(Bplus_node_t *node, Bplus_node_t *new_node, Bplus_node_t *point
                 new_node->pointer.low_level[j + 1] = node->pointer.low_level[i + 1];
                 node->pointer.low_level[i + 1] = NULL;
             }
+            i--;
         }
         else
         {
@@ -131,48 +163,27 @@ void MoveToRight(Bplus_node_t *node, Bplus_node_t *new_node, Bplus_node_t *point
             if (node->isleaf)
                 node->pointer.data[i] = node->pointer.data[i - 1];
             else
-                node->pointer.low_level[i] = node->pointer.low_level[i - 1];
+                node->pointer.low_level[i + 1] = node->pointer.low_level[i];
         }
+        node->keys[i] = 0;
+        node->pointer.low_level[i + 1] = NULL;
         node->keys[i] = new_key;
         if (node->isleaf)
             node->pointer.data[i] = new_data;
         else
-            node->pointer.low_level[i] = pointer_new_node;
+            node->pointer.low_level[i + 1] = pointer_new_node;
     }
 }
 
-void SimpleAddKey(Bplus_node_t *node, Bplus_node_t *pointer_new_node, int next_key_index, data_t *new_data, int new_key)
-{
-    int i;
-
-    node->cont_keys++;
-
-    for (i = node->cont_keys - 1; i > next_key_index; i--)
-    {
-        node->keys[i] = node->keys[i - 1];
-        if (node->isleaf)
-            node->pointer.data[i] = node->pointer.data[i - 1];
-        else
-            node->pointer.low_level[i] = node->pointer.low_level[i - 1];
-    }
-    node->keys[i] = new_key;
-    if (node->isleaf)
-        node->pointer.data[i] = new_data;
-    else
-        node->pointer.low_level[i + 1] = pointer_new_node;
-}
-
-bool Redistribution(Bplus_node_t *root, Bplus_node_t *node, int new_key, data_t *new_data);
-
-void SplitNode(Bplus_node_t *root, Bplus_node_t *node, Bplus_node_t *pointer_new_node, int next_key_index, int new_key, data_t *new_data)
+void SplitNode(Bplus_node_t **root, Bplus_node_t *node, Bplus_node_t *pointer_new_node, int next_key_index, int new_key, data_t *new_data)
 {
     int first_key, i;
     Bplus_node_t *new_node;
 
     node->cont_keys = (node->cont_keys + 1) / 2;
-    new_node = (Bplus_node_t *)calloc(1, sizeof(Bplus_node_t));
-    new_node->cont_keys = MAX_KEYS - node->cont_keys;
-    if (new_node->isleaf)
+    new_node = (Bplus_node_t *)malloc(sizeof(Bplus_node_t));
+    new_node->cont_keys = (MAX_KEYS + 1) - node->cont_keys;
+    if (node->isleaf)
     {
         new_node->isleaf = true;
         new_node->next_leaf = node->next_leaf;
@@ -188,17 +199,19 @@ void SplitNode(Bplus_node_t *root, Bplus_node_t *node, Bplus_node_t *pointer_new
     {
         for (i = 0; i < new_node->cont_keys; i++)
         {
-            new_node->keys[i] = node->keys[i + 1];
+            new_node->keys[i] = new_node->keys[i + 1];
             new_node->pointer.low_level[i] = new_node->pointer.low_level[i + 1];
         }
+        new_node->cont_keys--;
     }
-    InsertKey(&root, new_data, first_key, node, new_node);
+
+    InsertKey(root, new_data, first_key, node, new_node);
 }
 
 void InsertKey(Bplus_node_t **root, data_t *new_data, int new_key, Bplus_node_t *node, Bplus_node_t *pointer_new_node)
 {
     int next_key_index;
-    bool successo = false;
+    bool new_root = false, successo = false;
 
     if (node == NULL)
         node = SearchLeafCollocation(*root, new_key);
@@ -206,19 +219,23 @@ void InsertKey(Bplus_node_t **root, data_t *new_data, int new_key, Bplus_node_t 
     {
         node = SearchPointer(*root, node);
         if (node == NULL)
+        {
             *root = NewRoot(*root, pointer_new_node, new_key);
+            new_root = true;
+        }
+    }
+
+    if (!new_root)
+    {
+        next_key_index = SearchNextKeyIndex(node, new_key);
+
+        if (node->cont_keys + 1 <= MAX_KEYS)
+            SimpleAddKey(node, pointer_new_node, next_key_index, new_data, new_key);
         else
         {
-            next_key_index = SearchNextKeyIndex(node, new_key);
-
-            if (node->cont_keys + 1 <= MAX_KEYS)
-                SimpleAddKey(node, pointer_new_node, next_key_index, new_data, new_key);
-            else
-            {
-                // successo = Redistribution(root, node, new_key, new_data);
-                if (!successo)
-                    SplitNode(*root, node, pointer_new_node, next_key_index, new_key, new_data);
-            }
+            // successo = Redistribution();
+            if (!successo)
+                SplitNode(root, node, pointer_new_node, next_key_index, new_key, new_data);
         }
     }
 }

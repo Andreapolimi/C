@@ -2,19 +2,19 @@
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/andreavaccai/Coding/C/Librerie/B+tree/main'
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003124, symSize: 0xFC }
-  - { offsetInCU: 0x13C, offset: 0x13C, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003124, symSize: 0xFC }
-  - { offsetInCU: 0x26, offset: 0x1B4, size: 0x8, addend: 0x0, symName: _SearchLeafCollocation, symObjAddr: 0x0, symBinAddr: 0x100003220, symSize: 0x120 }
-  - { offsetInCU: 0x135, offset: 0x2C3, size: 0x8, addend: 0x0, symName: _SearchLeafCollocation, symObjAddr: 0x0, symBinAddr: 0x100003220, symSize: 0x120 }
-  - { offsetInCU: 0x195, offset: 0x323, size: 0x8, addend: 0x0, symName: _SearchPointer, symObjAddr: 0x120, symBinAddr: 0x100003340, symSize: 0x150 }
-  - { offsetInCU: 0x1F5, offset: 0x383, size: 0x8, addend: 0x0, symName: _NewRoot, symObjAddr: 0x270, symBinAddr: 0x100003490, symSize: 0x6C }
-  - { offsetInCU: 0x255, offset: 0x3E3, size: 0x8, addend: 0x0, symName: _SearchNextKeyIndex, symObjAddr: 0x2DC, symBinAddr: 0x1000034FC, symSize: 0xCC }
-  - { offsetInCU: 0x2B5, offset: 0x443, size: 0x8, addend: 0x0, symName: _MoveToRight, symObjAddr: 0x3A8, symBinAddr: 0x1000035C8, symSize: 0x2DC }
-  - { offsetInCU: 0x349, offset: 0x4D7, size: 0x8, addend: 0x0, symName: _SimpleAddKey, symObjAddr: 0x684, symBinAddr: 0x1000038A4, symSize: 0x13C }
-  - { offsetInCU: 0x3B3, offset: 0x541, size: 0x8, addend: 0x0, symName: _SplitNode, symObjAddr: 0x7C0, symBinAddr: 0x1000039E0, symSize: 0x188 }
-  - { offsetInCU: 0x447, offset: 0x5D5, size: 0x8, addend: 0x0, symName: _InsertKey, symObjAddr: 0x948, symBinAddr: 0x100003B68, symSize: 0x128 }
-  - { offsetInCU: 0x26, offset: 0x678, size: 0x8, addend: 0x0, symName: _InsertTale, symObjAddr: 0x0, symBinAddr: 0x100003C90, symSize: 0x64 }
-  - { offsetInCU: 0x172, offset: 0x7C4, size: 0x8, addend: 0x0, symName: _InsertTale, symObjAddr: 0x0, symBinAddr: 0x100003C90, symSize: 0x64 }
-  - { offsetInCU: 0x1B2, offset: 0x804, size: 0x8, addend: 0x0, symName: _RemoveHead, symObjAddr: 0x64, symBinAddr: 0x100003CF4, symSize: 0x44 }
-  - { offsetInCU: 0x1E4, offset: 0x836, size: 0x8, addend: 0x0, symName: _printfLevel, symObjAddr: 0xA8, symBinAddr: 0x100003D38, symSize: 0x178 }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003068, symSize: 0xFC }
+  - { offsetInCU: 0x13C, offset: 0x13C, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003068, symSize: 0xFC }
+  - { offsetInCU: 0x26, offset: 0x1B4, size: 0x8, addend: 0x0, symName: _SearchLeafCollocation, symObjAddr: 0x0, symBinAddr: 0x100003164, symSize: 0x120 }
+  - { offsetInCU: 0x135, offset: 0x2C3, size: 0x8, addend: 0x0, symName: _SearchLeafCollocation, symObjAddr: 0x0, symBinAddr: 0x100003164, symSize: 0x120 }
+  - { offsetInCU: 0x195, offset: 0x323, size: 0x8, addend: 0x0, symName: _SearchPointer, symObjAddr: 0x120, symBinAddr: 0x100003284, symSize: 0x18C }
+  - { offsetInCU: 0x1F5, offset: 0x383, size: 0x8, addend: 0x0, symName: _NewRoot, symObjAddr: 0x2AC, symBinAddr: 0x100003410, symSize: 0x6C }
+  - { offsetInCU: 0x255, offset: 0x3E3, size: 0x8, addend: 0x0, symName: _SearchNextKeyIndex, symObjAddr: 0x318, symBinAddr: 0x10000347C, symSize: 0x100 }
+  - { offsetInCU: 0x2B5, offset: 0x443, size: 0x8, addend: 0x0, symName: _SimpleAddKey, symObjAddr: 0x418, symBinAddr: 0x10000357C, symSize: 0x140 }
+  - { offsetInCU: 0x31F, offset: 0x4AD, size: 0x8, addend: 0x0, symName: _MoveToRight, symObjAddr: 0x558, symBinAddr: 0x1000036BC, symSize: 0x310 }
+  - { offsetInCU: 0x3B3, offset: 0x541, size: 0x8, addend: 0x0, symName: _SplitNode, symObjAddr: 0x868, symBinAddr: 0x1000039CC, symSize: 0x194 }
+  - { offsetInCU: 0x447, offset: 0x5D5, size: 0x8, addend: 0x0, symName: _InsertKey, symObjAddr: 0x9FC, symBinAddr: 0x100003B60, symSize: 0x13C }
+  - { offsetInCU: 0x26, offset: 0x686, size: 0x8, addend: 0x0, symName: _InsertTale, symObjAddr: 0x0, symBinAddr: 0x100003C9C, symSize: 0x64 }
+  - { offsetInCU: 0x172, offset: 0x7D2, size: 0x8, addend: 0x0, symName: _InsertTale, symObjAddr: 0x0, symBinAddr: 0x100003C9C, symSize: 0x64 }
+  - { offsetInCU: 0x1B2, offset: 0x812, size: 0x8, addend: 0x0, symName: _RemoveHead, symObjAddr: 0x64, symBinAddr: 0x100003D00, symSize: 0x44 }
+  - { offsetInCU: 0x1E4, offset: 0x844, size: 0x8, addend: 0x0, symName: _printfLevel, symObjAddr: 0xA8, symBinAddr: 0x100003D44, symSize: 0x178 }
 ...
