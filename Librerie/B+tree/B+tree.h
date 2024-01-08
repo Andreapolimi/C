@@ -26,6 +26,13 @@ typedef struct queue
     struct queue *next;
 } queue_t;
 
+bool Redistribution(Bplus_node_t *, Bplus_node_t *, int);
+
 void InsertKey(Bplus_node_t **, data_t *, int, Bplus_node_t *, Bplus_node_t *);
 
+void Remove(Bplus_node_t **, int, Bplus_node_t *);
+
 void printfLevel(Bplus_node_t *);
+
+Bplus_node_t *SearchLeaf(Bplus_node_t *, int);
+Bplus_node_t *SearchPointer(Bplus_node_t *, Bplus_node_t *);

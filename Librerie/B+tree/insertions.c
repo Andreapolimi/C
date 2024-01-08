@@ -3,66 +3,6 @@
 #include <stdbool.h>
 #include "B+tree.h"
 
-Bplus_node_t *SearchLeafCollocation(Bplus_node_t *root, int new_key)
-{
-    int i = 0;
-    bool trovato = false;
-    Bplus_node_t *node;
-
-    if (!(root->isleaf))
-    {
-        for (i = 0; i < root->cont_keys && trovato == false; i++)
-            if (root->keys[i] > new_key)
-            {
-                trovato = true;
-                node = SearchLeafCollocation(root->pointer.low_level[i], new_key);
-            }
-        if (!trovato)
-            node = SearchLeafCollocation(root->pointer.low_level[i], new_key);
-    }
-    else
-        node = root;
-
-    return node;
-}
-
-Bplus_node_t *SearchPointer(Bplus_node_t *root, Bplus_node_t *node)
-{
-    int i;
-    bool trovato = false;
-    Bplus_node_t *parent;
-
-    if (!(root->isleaf))
-    {
-        for (i = 0; i < root->cont_keys && trovato == false; i++)
-        {
-            if (root->keys[i] > node->keys[0])
-            {
-                if (root->pointer.low_level[i] == node)
-                {
-                    parent = root;
-                    trovato = true;
-                }
-                else
-                {
-                    parent = SearchPointer(root->pointer.low_level[i], node);
-                    trovato = true;
-                }
-            }
-        }
-        if (!trovato)
-        {
-            if (root->pointer.low_level[i] == node)
-                parent = root;
-        }
-        else
-            node = SearchPointer(root->pointer.low_level[i], node);
-    }
-    else
-        parent = NULL;
-    return parent;
-}
-
 Bplus_node_t *NewRoot(Bplus_node_t *root, Bplus_node_t *node, int new_key)
 {
     Bplus_node_t *new_root;
@@ -73,6 +13,9 @@ Bplus_node_t *NewRoot(Bplus_node_t *root, Bplus_node_t *node, int new_key)
     new_root->cont_keys = 1;
     new_root->pointer.low_level[0] = root;
     new_root->pointer.low_level[1] = node;
+    for (i = 2; i <= MAX_KEYS; i++)
+        new_root->pointer.low_level[i] = NULL;
+
     new_root->keys[0] = new_key;
 
     return new_root;
@@ -118,8 +61,6 @@ void SimpleAddKey(Bplus_node_t *node, Bplus_node_t *pointer_new_node, int next_k
     else
         node->pointer.low_level[i + 1] = pointer_new_node;
 }
-
-// bool Redistribution();
 
 void MoveToRight(Bplus_node_t *node, Bplus_node_t *new_node, Bplus_node_t *pointer_new_node, int next_key_index, data_t *new_data, int new_key)
 {
@@ -190,7 +131,11 @@ void SplitNode(Bplus_node_t **root, Bplus_node_t *node, Bplus_node_t *pointer_ne
         node->next_leaf = new_node;
     }
     else
+    {
         new_node->isleaf = false;
+        for (i = 0; i <= MAX_KEYS; i++)
+            new_node->pointer.low_level[i] = NULL;
+    }
 
     MoveToRight(node, new_node, pointer_new_node, next_key_index, new_data, new_key);
 
@@ -214,7 +159,7 @@ void InsertKey(Bplus_node_t **root, data_t *new_data, int new_key, Bplus_node_t 
     bool new_root = false, successo = false;
 
     if (node == NULL)
-        node = SearchLeafCollocation(*root, new_key);
+        node = SearchLeaf(*root, new_key);
     else
     {
         node = SearchPointer(*root, node);

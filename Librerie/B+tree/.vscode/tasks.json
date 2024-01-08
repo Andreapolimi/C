@@ -11,6 +11,9 @@
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
                 "insertions.c",
+                "search.c",
+                "remove.c",
+                "redistribution.c",
                 "print.c"
             ],
             "options": {
