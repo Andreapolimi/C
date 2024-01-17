@@ -1,0 +1,10 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/andreavaccai/Coding/C/Esami/2022-06-20/quesito3/q3'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _Max, symObjAddr: 0x0, symBinAddr: 0x100003A78, symSize: 0x94 }
+  - { offsetInCU: 0x7E, offset: 0x7E, size: 0x8, addend: 0x0, symName: _Max, symObjAddr: 0x0, symBinAddr: 0x100003A78, symSize: 0x94 }
+  - { offsetInCU: 0xD0, offset: 0xD0, size: 0x8, addend: 0x0, symName: "_PiùFrequente", symObjAddr: 0x94, symBinAddr: 0x100003B0C, symSize: 0x1DC }
+  - { offsetInCU: 0x13E, offset: 0x13E, size: 0x8, addend: 0x0, symName: _Modifica, symObjAddr: 0x270, symBinAddr: 0x100003CE8, symSize: 0x194 }
+  - { offsetInCU: 0x190, offset: 0x190, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x404, symBinAddr: 0x100003E7C, symSize: 0xBC }
+...

@@ -1,0 +1,14 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/andreavaccai/Coding/C/Esami/2022-02-15/quesito3/q3'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _CercaPrec, symObjAddr: 0x0, symBinAddr: 0x100003A88, symSize: 0x48 }
+  - { offsetInCU: 0x8A, offset: 0x8A, size: 0x8, addend: 0x0, symName: _CercaPrec, symObjAddr: 0x0, symBinAddr: 0x100003A88, symSize: 0x48 }
+  - { offsetInCU: 0xC0, offset: 0xC0, size: 0x8, addend: 0x0, symName: _MinimoInTesta, symObjAddr: 0x48, symBinAddr: 0x100003AD0, symSize: 0xD0 }
+  - { offsetInCU: 0x112, offset: 0x112, size: 0x8, addend: 0x0, symName: _Ordina, symObjAddr: 0x118, symBinAddr: 0x100003BA0, symSize: 0x5C }
+  - { offsetInCU: 0x13A, offset: 0x13A, size: 0x8, addend: 0x0, symName: _CreaNodo, symObjAddr: 0x174, symBinAddr: 0x100003BFC, symSize: 0x30 }
+  - { offsetInCU: 0x162, offset: 0x162, size: 0x8, addend: 0x0, symName: _CostruisciLista, symObjAddr: 0x1A4, symBinAddr: 0x100003C2C, symSize: 0x118 }
+  - { offsetInCU: 0x1A6, offset: 0x1A6, size: 0x8, addend: 0x0, symName: _StampaLista, symObjAddr: 0x2BC, symBinAddr: 0x100003D44, symSize: 0x74 }
+  - { offsetInCU: 0x1CA, offset: 0x1CA, size: 0x8, addend: 0x0, symName: _inserisci_elementi, symObjAddr: 0x330, symBinAddr: 0x100003DB8, symSize: 0x100 }
+  - { offsetInCU: 0x20E, offset: 0x20E, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x430, symBinAddr: 0x100003EB8, symSize: 0x64 }
+...

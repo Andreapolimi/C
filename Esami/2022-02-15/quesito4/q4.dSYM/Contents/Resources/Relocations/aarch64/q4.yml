@@ -1,0 +1,9 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/andreavaccai/Coding/C/Esami/2022-02-15/quesito4/q4'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _Decodifica, symObjAddr: 0x0, symBinAddr: 0x1000038E0, symSize: 0x1AC }
+  - { offsetInCU: 0x52, offset: 0x52, size: 0x8, addend: 0x0, symName: _Decodifica, symObjAddr: 0x0, symBinAddr: 0x1000038E0, symSize: 0x1AC }
+  - { offsetInCU: 0xDC, offset: 0xDC, size: 0x8, addend: 0x0, symName: _Codifica, symObjAddr: 0x1AC, symBinAddr: 0x100003A8C, symSize: 0x1B8 }
+  - { offsetInCU: 0x154, offset: 0x154, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x364, symBinAddr: 0x100003C44, symSize: 0x240 }
+...
