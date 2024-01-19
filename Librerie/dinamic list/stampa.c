@@ -5,13 +5,13 @@ typedef struct nodo
 {
     int val;
     struct nodo *next;
-} nodo_t;
+} node_t;
 
-void StampaLista(nodo_t *temp)
+void StampaLista(node_t *temp)
 {
     while (temp != NULL)
     {
-        printf("%d %d %d\n", temp->val);
+        printf("%d\t", temp->val);
         temp = temp->next;
     }
 }

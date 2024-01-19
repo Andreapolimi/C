@@ -1,0 +1,11 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/andreavaccai/Coding/C/Esami/2022-01-26/quesito4/q4'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _CreaNodo, symObjAddr: 0x0, symBinAddr: 0x1000039CC, symSize: 0x54 }
+  - { offsetInCU: 0x49, offset: 0x49, size: 0x8, addend: 0x0, symName: _CreaNodo, symObjAddr: 0x0, symBinAddr: 0x1000039CC, symSize: 0x54 }
+  - { offsetInCU: 0x7F, offset: 0x7F, size: 0x8, addend: 0x0, symName: _Frequenza, symObjAddr: 0x54, symBinAddr: 0x100003A20, symSize: 0x22C }
+  - { offsetInCU: 0xFD, offset: 0xFD, size: 0x8, addend: 0x0, symName: _Statistiche, symObjAddr: 0x280, symBinAddr: 0x100003C4C, symSize: 0xF8 }
+  - { offsetInCU: 0x14F, offset: 0x14F, size: 0x8, addend: 0x0, symName: _StampaLista, symObjAddr: 0x378, symBinAddr: 0x100003D44, symSize: 0x7C }
+  - { offsetInCU: 0x173, offset: 0x173, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x3F4, symBinAddr: 0x100003DC0, symSize: 0xF0 }
+...
