@@ -3,9 +3,9 @@
 
 typedef struct nodo
 {
-    int val, row, col;
+    int valore;
     struct nodo *next;
-} nodo_t;
+} node_t;
 
 node_t *inserisci_elementi(node_t *testa)
 {
