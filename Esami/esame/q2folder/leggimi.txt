@@ -1,0 +1,6 @@
+ciao 3
+cibo 4
+ciao 6
+troia 5
+ciao 5
+cibo 4
