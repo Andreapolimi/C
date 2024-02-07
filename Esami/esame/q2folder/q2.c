@@ -41,7 +41,7 @@ void scriviFile(FILE *ptr_in, FILE *ptr_out)
 
     for (i = 0; i < num_el; i++)
     {
-        fprintf(ptr_out, "%s %d", lista[i].el, lista[i].quant);
+        fprintf(ptr_out, "%s %d\n", lista[i].el, lista[i].quant);
     }
 }
 
