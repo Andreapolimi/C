@@ -1,8 +1,0 @@
----
-triple:          'arm64-apple-darwin'
-binary-path:     '/Users/andreavaccai/Coding/C/Esami/2022-01-26/quesito3/q3'
-relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _Partiziona, symObjAddr: 0x0, symBinAddr: 0x100003BF4, symSize: 0x2F8 }
-  - { offsetInCU: 0x4D, offset: 0x4D, size: 0x8, addend: 0x0, symName: _Partiziona, symObjAddr: 0x0, symBinAddr: 0x100003BF4, symSize: 0x2F8 }
-  - { offsetInCU: 0x101, offset: 0x101, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x2F8, symBinAddr: 0x100003EEC, symSize: 0x78 }
-...

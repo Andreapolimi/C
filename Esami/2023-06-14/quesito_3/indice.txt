@@ -1,3 +1,0 @@
-excelsior.txt
-italia.txt
-roma.txt
